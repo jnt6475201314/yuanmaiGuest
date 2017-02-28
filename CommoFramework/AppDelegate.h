@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JVFloatingDrawerViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+// 为了让点的控制器，方便地拿到抽屉
+- (JVFloatingDrawerViewController *)drawerViewController;
 
 
 @end

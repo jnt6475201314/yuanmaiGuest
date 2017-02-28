@@ -1,0 +1,27 @@
+//
+//  CommentTableViewCell.h
+//  CommoFramework
+//
+//  Created by 姜宁桃 on 2016/10/31.
+//  Copyright © 2016年 姜宁桃. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CommentTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *Comment_OrderNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *Comment_OrderStateLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *Comment_startingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *Comment_destinationLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *Comment_HeadImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *Comment_IDentityImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *comment_nameOfDriverLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comment_infoOfTruckLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comment_tradeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *comment_publishDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comment_arriveDateLabel;
+@end

@@ -1,0 +1,75 @@
+//
+//  CommonWork.pch
+//  CommoFramework
+//
+//  Created by 姜宁桃 on 2016/10/14.
+//  Copyright © 2016年 姜宁桃. All rights reserved.
+//
+
+#ifndef CommonWork_pch
+#define CommonWork_pch
+
+#define color(a,b,c,d) [UIColor colorWithRed:a/255.0 green:b/255.0 blue:c/255.0 alpha:d]
+//获取设备的物理高度
+#define screen_width [UIScreen mainScreen].bounds.size.width
+//获取设备的物理宽度
+#define screen_height [UIScreen mainScreen].bounds.size.height
+//获取设备的物理宽高
+#define screen_bounds [UIScreen mainScreen].bounds
+
+#define widthScale (screen_width/320)
+#define heightScale (screen_height/568)
+
+//生成随机颜色
+#define arc_Color [UIColor colorWithRed:arc4random()%256/255.0f green:arc4random()%256/255.0f blue:arc4random()%256/255.0f alpha:1.0f]
+
+//基本操作
+#define boldSystemFont(size)  [UIFont boldSystemFontOfSize:size]
+#define systemFont(size)      [UIFont systemFontOfSize:size]
+#define isIOS7                [[UIDevice currentDevice].systemVersion doubleValue]>=7.0?YES:NO
+#define SYSTEM_VERSION        [[[UIDevice currentDevice] systemVersion] floatValue]
+#define STATUSBAR_HEIGHT      [[UIApplication sharedApplication] statusBarFrame].size.height
+#define NAVBAR_HEIGHT         (44.f + ((SYSTEM_VERSION >= 7) ? STATUSBAR_HEIGHT : 0))
+
+//
+#define baseTableViewIdentifier @"BaseTableView"
+
+// common
+#define UserDefaults          [NSUserDefaults standardUserDefaults]
+#define AppDelegateInstance ((AppDelegate*)([UIApplication sharedApplication].delegate))
+
+#define IsStringEmpty(string) (!string || [@"" isEqualToString:string])
+#define IsStringNotEmpty(string) (string && ![@"" isEqualToString:string])
+
+#ifdef __OBJC__
+// 添加常用的 页面和控件
+#import "AppDelegate.h"
+#import <UIKit/UIKit.h>
+#import "Constants.h"
+#import "UIViewExt.h"
+#import "UIView+addition.h"
+#import "QuickControl.h"
+#import "NetRequest.h"
+#import "MYFactoryManager.h"
+#import "MyPicButton.h"
+#import "UIPlaceHolderTextView.h"
+#import "GTMBase64.h"
+#import "BaseTableView.h"
+#import "LoginViewController.h"
+#import "MyAnimation.h"
+#import "Net_API.h"
+#import "UIViewController+XHPhoto.h"
+#import "STPickerArea.h"
+#import "JPUSHService.h"
+#import <JKCountDownButton.h>
+#import <Masonry/Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <AFNetworking/AFNetworking.h>
+#import <FMDB/FMDatabase.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <MJRefresh/MJRefresh.h>
+//#import <UMengSocial/UMSocial.h>
+
+#endif
+
+#endif /* CommonWork_pch */

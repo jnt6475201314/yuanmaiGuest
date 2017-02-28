@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol btnCliekDelegate <NSObject>
+
+- (void)btnhaveClicked;
+
+@end
+
 @interface ViewController : UIViewController
 
+@property (nonatomic, weak)id<btnCliekDelegate> clickDelegate;
 
 @end
 
