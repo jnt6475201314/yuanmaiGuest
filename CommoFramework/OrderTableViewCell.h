@@ -15,6 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *order_destinationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *Order_timeLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *order_button_left;
 @property (weak, nonatomic) IBOutlet UIButton *order_button_right;
 @end

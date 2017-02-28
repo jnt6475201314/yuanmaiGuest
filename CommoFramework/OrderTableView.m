@@ -8,7 +8,7 @@
 
 #import "OrderTableView.h"
 #import "OrderTableViewCell.h"
-#import "OrderListModel.h"
+#import "PublishLishModel.h"
 
 @implementation OrderTableView
 
@@ -16,37 +16,83 @@
     
     OrderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:baseTableViewIdentifier];
     
-    OrderListModel * model = self.tabViewDataSource[indexPath.section];
-    cell.order_stateLabel.text = model.order_state;
-    cell.order_startingLabel.text = model.address_f;
-    cell.order_destinationLabel.text = model.address_s;
+    PublishLishModel * model = self.tabViewDataSource[indexPath.section];
+    cell.order_stateLabel.text = model.state;
+    cell.order_startingLabel.text = model.send;
+    cell.order_destinationLabel.text = model.arrival_address;
     cell.order_numberLabel.text = [NSString stringWithFormat:@"订单号：%@", model.order_number];
-    cell.Order_timeLabel.text = [NSString stringWithFormat:@"发布时间：%@", model.delivery_time];
+    cell.Order_timeLabel.text = [NSString stringWithFormat:@"发布时间：%@", model.add_time];
     
-    cell.order_button_left.titleLabel.adjustsFontSizeToFitWidth = YES;
     cell.order_button_right.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
-    cell.order_button_left.layer.borderColor = navBar_color.CGColor;
-    cell.order_button_left.layer.borderWidth = 1;
-    cell.order_button_right.layer.borderWidth = 1;
-    cell.order_button_right.layer.borderColor = [UIColor orangeColor].CGColor;
-    
-    if ([model.order_state isEqualToString:@"待装车"]) {
-        cell.order_stateLabel.textColor = [UIColor purpleColor];
-        [cell.order_button_left setTitle:@"取消" forState:UIControlStateNormal];
-        [cell.order_button_right setTitle:@"确认接单" forState:UIControlStateNormal];
-    }else if ([model.order_state isEqualToString:@"已到达"]){
-        cell.order_stateLabel.textColor = [UIColor orangeColor];
-        [cell.order_button_left setTitle:@"删除订单" forState:UIControlStateNormal];
-        [cell.order_button_right setTitle:@"评价" forState:UIControlStateNormal];
-    }else{
-        cell.order_stateLabel.textColor = [UIColor brownColor];
-        [cell.order_button_left setTitle:@"订单追踪" forState:UIControlStateNormal];
+    if ([model.state isEqualToString:@"3"]){
+        cell.order_button_right.layer.borderWidth = 1;
+        cell.order_button_right.layer.borderColor = [UIColor redColor].CGColor;
+        [cell.order_button_right setTitle:@"删除订单" forState:UIControlStateNormal];
+        cell.order_button_right.tag = 200 + indexPath.section;
+        [cell.order_button_right addTarget:self action:@selector(deleteOrderButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }else if ([model.state isEqualToString:@"2"]){
+        cell.order_button_right.layer.borderWidth = 1;
+        cell.order_button_right.layer.borderColor = [UIColor blueColor].CGColor;
         [cell.order_button_right setTitle:@"确认到达" forState:UIControlStateNormal];
+        cell.order_button_right.tag = 900 + indexPath.section;
+        [cell.order_button_right addTarget:self action:@selector(verifyOrderArrivedButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     
     return cell;
 }
+// 删除订单
+- (void)deleteOrderButtonClicked:(UIButton *)deleteBtn
+{
+    NSInteger index = deleteBtn.tag - 200;
+    PublishLishModel * model = self.tabViewDataSource[index];
+    
+    NSLog(@"删除发布信息");
+    NSDictionary * params = @{@"gid":model.gid, @"uid":GETUID};
+    NSLog(@"%@?%@", API_DeletePublishInfo_URL, params);
+    [NetRequest postDataWithUrlString:API_DeletePublishInfo_URL withParams:params success:^(id data) {
+        
+        NSLog(@"%@", data);
+        if ([data[@"code"] isEqualToString:@"1"]) {
+            [self.tabViewDataSource removeObjectAtIndex:index];
+            [self reloadData];
+            [self.mj_header beginRefreshing];
+            NSLog(@"删除该信息成功！");
+        }else if([data[@"code"] isEqualToString:@"2"]){
+            NSLog(@"删除该信息失败！");
+        }
+    } fail:^(id errorDes) {
+        NSLog(@"删除信息失败！ 失败原因：%@", errorDes);
+    }];
+    [self reloadData];
+}
+
+// 确认到达
+- (void)verifyOrderArrivedButtonClicked:(UIButton *)arrivedBtn
+{
+    NSInteger index = arrivedBtn.tag - 900;
+    PublishLishModel * model = self.tabViewDataSource[index];
+    
+    NSDictionary * params = @{@"gid":model.gid, @"uid":GETUID};
+    NSLog(@"%@?gid=%@", API_OrderAffirmArrivedAction_URL, model.gid);
+    [NetRequest postDataWithUrlString:API_OrderAffirmArrivedAction_URL withParams:params success:^(id data) {
+        
+        NSLog(@"%@", data);
+        if ([data[@"code"] isEqualToString:@"1"]) {
+            [self.tabViewDataSource removeObjectAtIndex:index];
+            [self reloadData];
+            [self.mj_header beginRefreshing];
+        }else if([data[@"code"] isEqualToString:@"2"]){
+            
+        }
+        NSLog(@"code:%@, message:%@", data[@"code"], data[@"message"]);
+        NSLog(@"删除该信息成功！");
+    } fail:^(id errorDes) {
+        NSLog(@"删除信息失败！ 失败原因：%@", errorDes);
+    }];
+    [self reloadData];
+}
+
+
 
 @end

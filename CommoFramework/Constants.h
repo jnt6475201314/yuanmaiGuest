@@ -66,10 +66,10 @@
 #define JPushAppKey @"df89266798e9ab539431ff73"
 #define JPushChannel @"Publish channel"
 //友盟配置
-#define YOUMENG_APPKEY @"56551c4de0f55a60cc00a384"
+#define YOUMENG_APPKEY @"58b536f565b6d6688d000858"
 //------QQ-------
-#define YOUMENG_QQ_ID @"1105294796"
-#define YOUMENG_QQ_KEY @"P4BCCO5I1ijWUz0Z"
+#define YOUMENG_QQ_ID @"1105938205"
+#define YOUMENG_QQ_KEY @"6msUeDZZbAIKU5Ey"
 //------WX-------
 #define WEIXIN_ID @"wx38871b3f2cfd353d"
 #define WEIXIN_KEY @"db426a9829e4b49a0dcac7b4162da6b6"

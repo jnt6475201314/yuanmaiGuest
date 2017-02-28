@@ -7,12 +7,12 @@
 //
 
 #import "BaseViewController.h"
-#import "OrderListModel.h"
+#import "PublishLishModel.h"
 #import "DriverInfoModel.h"
 
 @interface DetailOrderViewController : BaseViewController
 
-@property (nonatomic, strong) OrderListModel * orderModel;  // 运单模型
-@property (nonatomic, strong) DriverInfoModel * driverModel;  // 司机信息模型
+@property (nonatomic, strong) PublishLishModel * orderModel;  // 运单模型
+//@property (nonatomic, strong) DriverInfoModel * driverModel;  // 司机信息模型
 
 @end

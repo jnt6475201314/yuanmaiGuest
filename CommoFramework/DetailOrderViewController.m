@@ -10,19 +10,20 @@
 
 #import "OrderTrackingViewController.h"  // 订单追踪
 
-@interface DetailOrderViewController ()
-{
-    UIView * _topView;
-    UIImageView * _driverHeadImgView;
-    UIImageView * _identityImgView; // 认证图片
-    
-    UIView * _middleView;
-    
-    UIView * _bottomView;
-    
-    UIButton * _leftButton;
-    UIButton * _rightButton;
-}
+@interface DetailOrderViewController ()<UIWebViewDelegate>
+@property (nonatomic, strong) UIWebView * webView;
+//{
+//    UIView * _topView;
+//    UIImageView * _driverHeadImgView;
+//    UIImageView * _identityImgView; // 认证图片
+//    
+//    UIView * _middleView;
+//    
+//    UIView * _bottomView;
+//    
+//    UIButton * _leftButton;
+//    UIButton * _rightButton;
+//}
 
 @end
 
@@ -34,6 +35,42 @@
     [self configUI];
 }
 
+- (void)configUI{
+    [self showBackBtn];
+    
+    self.titleLabel.text = @"订单详情";
+    
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height - 64)];
+    self.webView.delegate = self;
+    self.webView.userInteractionEnabled = YES;
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:API_PushlishDetailWithGid(self.orderModel.gid)]];
+    [self.webView loadRequest:request];
+    [self.view addSubview:self.webView];
+    
+    [self showHUD:@"数据加载中，请稍候。。。" isDim:YES];
+}
+
+#pragma mark - UIWebViewDelegate
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self hideHUD];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self hideHUD];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showTipView:[NSString stringWithFormat:@"数据请求出错，错误信息：%@", error]];
+    });
+}
+
+
+#if 0
 - (void)configUI{
     [self showBackBtn];
     
@@ -187,6 +224,8 @@
 - (void)rightButtonEvent:(UIButton *)btn{
     
 }
+
+#endif
 
 
 - (void)didReceiveMemoryWarning {

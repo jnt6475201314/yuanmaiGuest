@@ -8,14 +8,15 @@
 
 #import "DetailPublishViewController.h"
 
-@interface DetailPublishViewController ()
-{
-    UIButton * _repeatButton;  // 重发按钮
-    UIButton * _deleteButton;  // 删除按钮
-    
-    UIView * _TopBackView1;  // 顶部背景1
-    UIView * _BottomBackView3;  // 底部背景3
-}
+@interface DetailPublishViewController ()<UIWebViewDelegate>
+@property (nonatomic, strong) UIWebView * webView;
+//{
+//    UIButton * _repeatButton;  // 重发按钮
+//    UIButton * _deleteButton;  // 删除按钮
+//    
+//    UIView * _TopBackView1;  // 顶部背景1
+//    UIView * _BottomBackView3;  // 底部背景3
+//}
 
 @end
 
@@ -26,8 +27,40 @@
     
     [self showBackBtn];
     self.titleLabel.text = @"发布详情";
-//    [self configUI];
+    [self configUI];
 }
+
+- (void)configUI
+{
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height - 64)];
+    self.webView.delegate = self;
+    self.webView.userInteractionEnabled = YES;
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:API_PushlishDetailWithGid(self.publishModel.gid)]];
+    [self.webView loadRequest:request];
+    [self.view addSubview:self.webView];
+    
+    [self showHUD:@"数据加载中，请稍候。。。" isDim:YES];
+}
+
+#pragma mark - UIWebViewDelegate
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self hideHUD];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self hideHUD];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showTipView:[NSString stringWithFormat:@"数据请求出错，错误信息：%@", error]];
+    });
+}
+
 
 #warning 这里也要改过了
 #if 0

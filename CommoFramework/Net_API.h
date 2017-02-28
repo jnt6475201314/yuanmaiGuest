@@ -42,10 +42,14 @@
 
 #define API_PublishOrderInfo_URL [NSString stringWithFormat:@"%@AppCustomer/orders.html", CommonHeadUrl]  // 发布货源信息
 #define API_PublishOrderList_URL [NSString stringWithFormat:@"%@AppCustomer/releaseorder.html", CommonHeadUrl]  // 发布货源列表
+#define API_PushlishDetailWithGid(gid) [NSString stringWithFormat:@"%@AppCustomer/CustomerOrderInfo?uid=%@&gid=%@", CommonHeadUrl,GETUID,gid]   // 发布／运单 详情接口
+//#define API_OrderDetailWithGid(gid) [NSString stringWithFormat:@"%@AppCustomer/CompleteOrder?uid=%@&gid=%@", CommonHeadUrl,GETUID,gid]   // 运单详情
+
 
 #define API_OrderList_URL [NSString stringWithFormat:@"%@Apporder/order_info.html", CommonHeadUrl]  // 发布货源信息
 #define API_OrderDetailInfo_URL [NSString stringWithFormat:@"%@Apporder/s_info.html", CommonHeadUrl]  // 获取运单详情
 #define API_OrderDetailInfo_URL [NSString stringWithFormat:@"%@Apporder/s_info.html", CommonHeadUrl]  // 获取运单详情
+#define API_OrderAffirmArrivedAction_URL [NSString stringWithFormat:@"%@AppCustomer/CompleteOrder.html", CommonHeadUrl]  // 运单操作：确认到达
 
 
 #define API_DeletePublishInfo_URL [NSString stringWithFormat:@"%@AppCustomer/del.html", CommonHeadUrl]  // 删除发布信息

@@ -57,7 +57,7 @@
     NSString * oidStr = [NSString stringWithFormat:@"%@", infoModel.gid];
     NSDictionary * params = @{@"gid":oidStr, @"uid":GETUID};
     NSLog(@"%@?oid=%@", API_DeletePublishInfo_URL, oidStr);
-    [NetRequest getDataWithUrlString:API_DeletePublishInfo_URL withParams:params success:^(id data) {
+    [NetRequest postDataWithUrlString:API_DeletePublishInfo_URL withParams:params success:^(id data) {
         
         NSLog(@"%@", data);
         if ([data[@"code"] isEqualToString:@"1"]) {

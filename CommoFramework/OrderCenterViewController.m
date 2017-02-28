@@ -9,7 +9,7 @@
 #import "OrderCenterViewController.h"
 #import "SelectedView.h"
 #import "OrderTableViewCell.h"
-#import "OrderListModel.h"
+#import "PublishLishModel.h"
 #import "OrderTableView.h"
 #import "DriverInfoModel.h"
 #import "DetailOrderViewController.h"
@@ -25,8 +25,8 @@
     UIView * view;
     OrderTableView * _tableView0;
     OrderTableView * _tableView1;
-    OrderTableView * _tableView2;
-    OrderTableView * _tableView3;
+//    OrderTableView * _tableView2;
+//    OrderTableView * _tableView3;
 }
 @property (nonatomic) NSArray * titles;
 @property (nonatomic, strong) OrderTableView * tableView;
@@ -48,8 +48,8 @@
     _page = 0;
     p = [NSString stringWithFormat:@"%ld", _page];
     
-    params = [NSMutableDictionary dictionaryWithDictionary:@{@"uid":GETUID, @"p":[NSString stringWithFormat:@"%ld", _page], @"stateid":@""}];
-    self.titles = @[@"全部", @"待装车", @"运输中", @"已到达"];
+    params = [NSMutableDictionary dictionaryWithDictionary:@{@"uid":GETUID, @"p":[NSString stringWithFormat:@"%ld", _page], @"state":@"2"}];
+    self.titles = @[@"运输中", @"已到达"];
     [self configHeadSelectedView];
     [self configBottomScrollView];
 }
@@ -94,13 +94,14 @@
         }else if (i == 1){
             _tableView1 = tableView;
             [view addSubview:_tableView1];
-        }else if (i == 2){
-            _tableView2 = tableView;
-            [view addSubview:_tableView2];
-        }else if (i == 3){
-            _tableView3 = tableView;
-            [view addSubview:_tableView3];
         }
+//        }else if (i == 2){
+//            _tableView2 = tableView;
+//            [view addSubview:_tableView2];
+//        }else if (i == 3){
+//            _tableView3 = tableView;
+//            [view addSubview:_tableView3];
+//        }
     }
     
     self.tableView = _tableView0;
@@ -148,27 +149,27 @@
         case 0:
         {
             self.tableView = _tableView0;
-            [params setObject:@"" forKey:@"stateid"];
+            [params setObject:@"2" forKey:@"state"];
         }
             break;
         case 1:
         {
             self.tableView = _tableView1;
-            [params setObject:@"2" forKey:@"stateid"];
+            [params setObject:@"3" forKey:@"state"];
             break;
         }
-        case 2:
-        {
-            self.tableView = _tableView2;
-            [params setObject:@"3" forKey:@"stateid"];
-        }
-            break;
-        case 3:
-        {
-            self.tableView = _tableView3;
-            [params setObject:@"4" forKey:@"stateid"];
-        }
-            break;
+//        case 2:
+//        {
+//            self.tableView = _tableView2;
+//            [params setObject:@"3" forKey:@"stateid"];
+//        }
+//            break;
+//        case 3:
+//        {
+//            self.tableView = _tableView3;
+//            [params setObject:@"4" forKey:@"stateid"];
+//        }
+//            break;
         default:
             break;
     }
@@ -179,24 +180,25 @@
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailOrderViewController * detailOrderVC = [[DetailOrderViewController alloc] init];
     detailOrderVC.orderModel = self.tableView.tabViewDataSource[indexPath.section];
+    [self.navigationController pushViewController:detailOrderVC animated:YES];
 //    NSString * durlStr = [URLHEAD stringByAppendingString:@"s_info.html"];
-    NSString * driver_id = detailOrderVC.orderModel.driver_id;
-    NSDictionary * dparams = @{@"driver_id":driver_id};
-    NSLog(@"%@?driver_id=%@", API_OrderDetailInfo_URL, driver_id);
-    [NetRequest getDataWithUrlString:API_OrderDetailInfo_URL withParams:dparams success:^(id data){
-        
-        NSLog(@"%@", data);
-        if ([data[@"code"] isEqualToString:@"1"]) {
-            NSLog(@"%@", data[@"data"]);
-            detailOrderVC.driverModel = [[DriverInfoModel alloc] initWithDictionary:data[@"data"] error:nil];
-            [self.navigationController pushViewController:detailOrderVC animated:YES];
-        }else if ([data[@"code"] isEqualToString:@"2"]) {
-            [self showTipView:data[@"message"]];
-        }
-    } fail:^(id errorDes) {
-        [self showTipView:@"获取信息失败！"];
-        NSLog(@"%@", errorDes);
-    }];
+//    NSString * driver_id = detailOrderVC.orderModel.driver_id;
+//    NSDictionary * dparams = @{@"driver_id":driver_id};
+//    NSLog(@"%@?driver_id=%@", API_PublishOrderList_URL, driver_id);
+//    [NetRequest postDataWithUrlString:API_PublishOrderList_URL withParams:dparams success:^(id data){
+//        
+//        NSLog(@"%@", data);
+//        if ([data[@"code"] isEqualToString:@"1"]) {
+//            NSLog(@"%@", data[@"data"]);
+//            detailOrderVC.driverModel = [[DriverInfoModel alloc] initWithDictionary:data[@"data"] error:nil];
+//            [self.navigationController pushViewController:detailOrderVC animated:YES];
+//        }else if ([data[@"code"] isEqualToString:@"2"]) {
+//            [self showTipView:data[@"message"]];
+//        }
+//    } fail:^(id errorDes) {
+//        [self showTipView:@"获取信息失败！"];
+//        NSLog(@"%@", errorDes);
+//    }];
     
 }
 
@@ -206,15 +208,15 @@
     _page = 1;
     [params setObject:[NSString stringWithFormat:@"%ld", _page] forKey:@"p"];
 //    NSString * urlStr = [URLHEAD stringByAppendingString:@"order_info.html"];
-    NSLog(@"%@?%@", API_OrderList_URL, params);
-    [NetRequest getDataWithUrlString:API_OrderList_URL withParams:params success:^(id data) {
+    NSLog(@"%@?%@", API_PublishOrderList_URL, params);
+    [NetRequest postDataWithUrlString:API_PublishOrderList_URL withParams:params success:^(id data) {
         [self.tableView.tabViewDataSource removeAllObjects];
         NSLog(@"%@", data);
         if ([data[@"code"] isEqualToString:@"1"]) {
             for (NSDictionary * dict in data[@"data"]) {
                 
-                // 区分放入数组
-                [self addToDataSourceWithDict:dict];
+                PublishLishModel * model = [[PublishLishModel alloc] initWithDictionary:dict error:nil];
+                [self.tableView.tabViewDataSource addObject:model];
                 
             }
         }else if ([data[@"code"] isEqualToString:@"2"]){
@@ -231,41 +233,20 @@
     }];
 }
 
-- (void)addToDataSourceWithDict:(NSDictionary *)dict{
-    if (self.tableView == _tableView0) {
-        OrderListModel * model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
-        [self.tableView.tabViewDataSource addObject:model];
-    }else if (self.tableView == _tableView1){
-        OrderListModel * model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
-        if ([model.order_state isEqualToString:@"待装车"]) {
-            [self.tableView.tabViewDataSource addObject:model];
-        }
-    }else if (self.tableView == _tableView2){
-        OrderListModel * model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
-        if ([model.order_state isEqualToString:@"运输中"]) {
-            [self.tableView.tabViewDataSource addObject:model];
-        }
-    }else if (self.tableView == _tableView3){
-        OrderListModel * model = [[OrderListModel alloc] initWithDictionary:dict error:nil];
-        if ([model.order_state isEqualToString:@"已到达"]) {
-            [self.tableView.tabViewDataSource addObject:model];
-        }
-    }
-}
-
 - (void)footerRefreshingEvent
 {
     _page++;
     [params setObject:[NSString stringWithFormat:@"%ld", _page] forKey:@"p"];
 //    NSString * urlStr = [URLHEAD stringByAppendingString:@"order_info.html"];
-    NSLog(@"%@?%@", API_OrderList_URL, params);
-    [NetRequest getDataWithUrlString:API_OrderList_URL withParams:params success:^(id data) {
+    NSLog(@"%@?%@", API_PublishOrderList_URL, params);
+    [NetRequest postDataWithUrlString:API_PublishOrderList_URL withParams:params success:^(id data) {
         
         NSLog(@"%@", data);
         if ([data[@"code"] isEqualToString:@"1"]) {
             for (NSDictionary * dict in data[@"data"]) {
                 
-                [self addToDataSourceWithDict:dict];
+                PublishLishModel * model = [[PublishLishModel alloc] initWithDictionary:dict error:nil];
+                [self.tableView.tabViewDataSource addObject:model];
             }
         }else if ([data[@"code"] isEqualToString:@"2"]){
             //            [self showTipView:data[@"message"]];
