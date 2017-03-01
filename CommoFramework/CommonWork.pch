@@ -68,7 +68,7 @@
 #import <FMDB/FMDatabase.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <MJRefresh/MJRefresh.h>
-//#import <UMengSocial/UMSocial.h>
+#import <UMengSocial/UMSocial.h>
 
 #endif
 

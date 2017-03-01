@@ -35,7 +35,12 @@
 @end
 
 @implementation OrderCenterViewController
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView.mj_header beginRefreshing];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -105,7 +110,6 @@
     }
     
     self.tableView = _tableView0;
-    [self.tableView.mj_header beginRefreshing];
     //添加视图
     [self.view addSubview:_scrollView];
     

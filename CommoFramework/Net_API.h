@@ -15,6 +15,8 @@
 #define GETData [UserDefaults objectForKey:@"data"]
 #define GETUID GETData[@"uid"]
 #define GETTOKEN_Str [UserDefaults objectForKey:@"token_str"]
+#define GETDeviceToken [UserDefaults objectForKey:@"deviceToken"]
+
 // 是否检测异地登录
 #define RELOGIN @"relogin"   //
 #define GetRELOGINStatus [UserDefaults objectForKey:RELOGIN]
@@ -29,6 +31,7 @@
 #endif
 
 #define CHECK_TokenStr_UrlStr [NSString stringWithFormat:@"%@AppCustomer/verify", CommonHeadUrl]  // 检查异地登录
+#define API_GetPushStr_URL [NSString stringWithFormat:@"%@AppCustomer/GetDevice", CommonHeadUrl]  // 获取推送别名
 
 #define guideCommonHeadUrl @"http://139.196.29.1/test/"
 #define API_GETGUIDANCEIMAGE_URL [NSString stringWithFormat:@"%@/Admin/Applineorder/guideImage", guideCommonHeadUrl]     // 引导页图片
@@ -43,12 +46,13 @@
 #define API_PublishOrderInfo_URL [NSString stringWithFormat:@"%@AppCustomer/orders.html", CommonHeadUrl]  // 发布货源信息
 #define API_PublishOrderList_URL [NSString stringWithFormat:@"%@AppCustomer/releaseorder.html", CommonHeadUrl]  // 发布货源列表
 #define API_PushlishDetailWithGid(gid) [NSString stringWithFormat:@"%@AppCustomer/CustomerOrderInfo?uid=%@&gid=%@", CommonHeadUrl,GETUID,gid]   // 发布／运单 详情接口
-//#define API_OrderDetailWithGid(gid) [NSString stringWithFormat:@"%@AppCustomer/CompleteOrder?uid=%@&gid=%@", CommonHeadUrl,GETUID,gid]   // 运单详情
 
+#define API_CommentList_URL [NSString stringWithFormat:@"%@AppCustomer/CommentList.html", CommonHeadUrl]  // 获取评论列表
+#define API_CommentOrder_URL [NSString stringWithFormat:@"%@AppCustomer/Comment.html", CommonHeadUrl]  // 评论订单
+#define API_OrderCommentInfo_URL [NSString stringWithFormat:@"%@AppCustomer/CommentInfo.html", CommonHeadUrl]  // 获取订单单条评论信息
 
-#define API_OrderList_URL [NSString stringWithFormat:@"%@Apporder/order_info.html", CommonHeadUrl]  // 发布货源信息
-#define API_OrderDetailInfo_URL [NSString stringWithFormat:@"%@Apporder/s_info.html", CommonHeadUrl]  // 获取运单详情
-#define API_OrderDetailInfo_URL [NSString stringWithFormat:@"%@Apporder/s_info.html", CommonHeadUrl]  // 获取运单详情
+#define API_OrderList_URL [NSString stringWithFormat:@"%@Apporder/order_info.html", CommonHeadUrl]  // 获取订单列表
+#define API_OrderDetailInfo_URL [NSString stringWithFormat:@"%@Apporder/s_info.html", CommonHeadUrl]  // 获取订单详情
 #define API_OrderAffirmArrivedAction_URL [NSString stringWithFormat:@"%@AppCustomer/CompleteOrder.html", CommonHeadUrl]  // 运单操作：确认到达
 
 

@@ -15,13 +15,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *Comment_startingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *Comment_destinationLabel;
 
-@property (weak, nonatomic) IBOutlet UIImageView *Comment_HeadImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *Comment_IDentityImageView;
 
-@property (weak, nonatomic) IBOutlet UILabel *comment_nameOfDriverLabel;
-@property (weak, nonatomic) IBOutlet UILabel *comment_infoOfTruckLabel;
-@property (weak, nonatomic) IBOutlet UILabel *comment_tradeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *Comment_goodsWeight;
+@property (weak, nonatomic) IBOutlet UILabel *Comment_goodSize;
+@property (weak, nonatomic) IBOutlet UILabel *Comment_goodsType;
 
-@property (weak, nonatomic) IBOutlet UILabel *comment_publishDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *comment_arriveDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *Comment_arriveTime;
+
+
 @end

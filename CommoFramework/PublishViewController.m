@@ -24,11 +24,16 @@
 @end
 
 @implementation PublishViewController
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView.mj_header beginRefreshing];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self headerRefreshingEvent];
     [self configUI];
 }
 

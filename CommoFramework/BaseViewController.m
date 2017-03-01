@@ -7,13 +7,13 @@
 //
 
 #import "BaseViewController.h"
-//#import <UMSocialQQHandler.h>
-//#import <UMSocialWechatHandler.h>
-//#import <UMSocialSinaHandler.h>
-//#import <UMSocialSinaSSOHandler.h>
+#import <UMSocialQQHandler.h>
+#import <UMSocialWechatHandler.h>
+#import <UMSocialSinaHandler.h>
+#import <UMSocialSinaSSOHandler.h>
 #import "TabBarController.h"
 
-@interface BaseViewController ()//<UMSocialUIDelegate>
+@interface BaseViewController ()<UMSocialUIDelegate>
 //加载视图
 @property (nonatomic,strong)UILabel *tipLabel;
 @end
@@ -224,7 +224,7 @@
     
 }
 
-#if 0
+#if 1
 #pragma 分享事件
 - (void)shareQQAndWechat:(NSString *)urlStr {
     [UMSocialWechatHandler setWXAppId:WEIXIN_ID appSecret:WEIXIN_KEY url:urlStr];

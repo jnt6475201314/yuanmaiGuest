@@ -12,26 +12,24 @@
 
 
 @property (nonatomic, copy) NSString<Optional> * order_number;  // 订单号
-@property (nonatomic, copy) NSString<Optional> * order_state;  // 订单状态
+@property (nonatomic, copy) NSString<Optional> * state;  // 订单状态
 @property (nonatomic, copy) NSString<Optional> * comment;  // 评论星级
-@property (nonatomic, copy) NSString<Optional> * state;  //  是否已经评价  已评价就有值且为1，未评价无值
+@property (nonatomic, copy) NSString<Optional> * comment_state;  //  是否已经评价  已评价就有值且为1，未评价无值
 
-@property (nonatomic, copy) NSString<Optional> * address_f;  // 出发地
-@property (nonatomic, copy) NSString<Optional> * address_s; // 目的地
+@property (nonatomic, copy) NSString<Optional> * send;  // 出发地
+@property (nonatomic, copy) NSString<Optional> * planned_time; // 目的地
 @property (nonatomic, copy) NSString<Optional> * delivery_time; // 发布时间
 @property (nonatomic, copy) NSString<Optional> * driver_id; // 司机id
-@property (nonatomic, copy) NSString<Optional> * name; // 姓名
+@property (nonatomic, copy) NSString<Optional> * add_time; // 发布时间
 
-@property (nonatomic, copy) NSString<Optional> * goods_load;  // 货物重量
-@property (nonatomic, copy) NSString<Optional> * goods_size; // 货物体积
+@property (nonatomic, copy) NSString<Optional> * total_weight;  // 货物重量
+@property (nonatomic, copy) NSString<Optional> * cube; // 货物体积
 @property (nonatomic, copy) NSString<Optional> * goods_type; // 货物类型
-@property (nonatomic, copy) NSString<Optional> * oid; // 订单id
+@property (nonatomic, copy) NSString<Optional> * gid; // 订单id
 
-@property (nonatomic, copy) NSString<Optional> * photo;  // 头像地址
-@property (nonatomic, copy) NSString<Optional> * tel; // 电话
-@property (nonatomic, copy) NSString<Optional> * vehicle_length; //  车长
-@property (nonatomic, copy) NSString<Optional> * vehicle_load; //  车重
-@property (nonatomic, copy) NSString<Optional> * models; // 车型
+@property (nonatomic, copy) NSString<Optional> * uid;  // 头像
+@property (nonatomic, copy) NSString<Optional> * pid; //    评论的id
+
 
 @property (nonatomic, copy) NSString<Optional> * stars;  // 评价星级
 @property (nonatomic, copy) NSString<Optional> * content;  // 评价内容

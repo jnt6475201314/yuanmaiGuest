@@ -24,13 +24,13 @@
     cell.Order_timeLabel.text = [NSString stringWithFormat:@"发布时间：%@", model.add_time];
     
     cell.order_button_right.titleLabel.adjustsFontSizeToFitWidth = YES;
-    if ([model.state isEqualToString:@"3"]){
+    if ([model.state isEqualToString:@"已到达"]){
         cell.order_button_right.layer.borderWidth = 1;
         cell.order_button_right.layer.borderColor = [UIColor redColor].CGColor;
         [cell.order_button_right setTitle:@"删除订单" forState:UIControlStateNormal];
         cell.order_button_right.tag = 200 + indexPath.section;
         [cell.order_button_right addTarget:self action:@selector(deleteOrderButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    }else if ([model.state isEqualToString:@"2"]){
+    }else if ([model.state isEqualToString:@"运输中"]){
         cell.order_button_right.layer.borderWidth = 1;
         cell.order_button_right.layer.borderColor = [UIColor blueColor].CGColor;
         [cell.order_button_right setTitle:@"确认到达" forState:UIControlStateNormal];

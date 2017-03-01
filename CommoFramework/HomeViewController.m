@@ -41,8 +41,39 @@
     [self headerRefreshingEvent];
     [self configUI];
     
+    [self uploadPushInfoToServer];  // 上传推送数据到后台
+}
+
+- (void)uploadPushInfoToServer
+{
+    if (GETDeviceToken) {
+        NSLog(@"%@?%@", API_GetPushStr_URL, @{@"uid":GETUID, @"device_token":GETDeviceToken});
+        [NetRequest postDataWithUrlString:API_GetPushStr_URL withParams:@{@"uid":GETUID, @"device_token":GETDeviceToken} success:^(id data) {
+            
+            NSLog(@"%@", data);
+            if ([data[@"code"] isEqualToString:@"1"]) {
+                NSString * tags = data[@"data"][@"tags"];   // 别名
+                NSLog(@"uploadPushInfoToServer data: %@, tags:%@", data, tags);
+                // 向极光和后台发送别名
+                [JPUSHService setTags:[NSSet setWithObject:@"yuanmaiClient"] alias:tags fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                    
+                    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
+                }];
+            }else
+            {
+                
+            }
+        } fail:^(NSString *errorDes) {
+            
+            NSLog(@"获取别名失败");
+        }];
+    }else
+    {
+        NSLog(@"tokenStr不存在");
+    }
     
 }
+
 
 - (void)configUI{
     self.navView.backgroundColor = navBar_color;//color(67, 89, 224, 1);
@@ -88,7 +119,7 @@
     [_headerView adjustWhenControllerViewWillAppera];
     _headerView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
     
-    _cellArray = [NSMutableArray arrayWithObjects:@"h_scanIcon", @"h_findGoods",@"h_comments",@"h_services", nil];
+    _cellArray = [NSMutableArray arrayWithObjects:@"h_scanIcon", @"h_share",@"h_comments",@"h_services", nil];
     [self configDragCollectionView];
     
     [self configTableView];
@@ -143,7 +174,7 @@
 -(NSArray *)data{
     if (!_data) {
 //        _data = @[@"扫描", @"找车", @"评价", @"服务", @"常用地址", @"常用司机", @"消息", @"个人中心"];
-        _data = @[@"扫描", @"找车", @"评价", @"服务"];
+        _data = @[@"扫描", @"分享", @"评价", @"服务"];
     }
     return _data;
 }
@@ -166,7 +197,7 @@
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     [cell sizeToFit];
     
-    NSArray * textArray = @[@"扫描", @"找车", @"评价", @"服务"];
+    NSArray * textArray = @[@"扫描", @"分享", @"评价", @"服务"];
     cell.imgView.image = [UIImage imageNamed:_cellArray[indexPath.item]];
     cell.text.text = textArray[indexPath.item];
     //按钮事件就不实现了……
@@ -227,7 +258,16 @@
     }else if ([title isEqualToString:@"个人中心"]){
         // 个人中心
         [self leftNavBtnClicked];
+    }else if ([title isEqualToString:@"分享"]){
+        [self shareBtnEvent];
     }
+}
+
+- (void)shareBtnEvent
+{
+    [self shareQQAndWechat:SHAREAPP_URL];
+//    [self shareSheetView:@"远迈物流 司机版 App下载" withImage:@"shareAppIcon"];
+    [self shareController:@"远迈物流 司机版 App下载" withImage:@"shareAppIcon"];
 }
 
 #pragma mark - SDCycleScrollViewDelegate

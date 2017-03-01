@@ -24,11 +24,16 @@
 @end
 
 @implementation CommentsViewController
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView.mj_header beginRefreshing];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self headerRefreshingEvent];
     [self configUI];
 }
 
@@ -53,10 +58,9 @@
     _page = 1;
     [self showHUD:@"数据加载中，请稍候。。" isDim:YES];
     
-    NSString * urlStr = @"http://202.91.248.43/project/index.php/Admin/Apporder/comment_query.html";
     NSDictionary * params = @{@"uid":GETUID, @"p":[NSString stringWithFormat:@"%ld", _page]};
-    NSLog(@"%@?uid=%@", urlStr, [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"]);
-    [NetRequest getDataWithUrlString:urlStr withParams:params success:^(id data) {
+    NSLog(@"%@?uid=%@", API_CommentList_URL, GETUID);
+    [NetRequest postDataWithUrlString:API_CommentList_URL withParams:params success:^(id data) {
         [self.tableView.tabViewDataSource removeAllObjects];
         NSLog(@"%@", data);
         if ([data[@"code"] isEqualToString:@"1"]) {
@@ -119,7 +123,7 @@
 #pragma mark - Getter
 -(CommentTableView *)tableView{
     if (_tableView == nil) {
-        _tableView = [[CommentTableView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height - 64) style:UITableViewStyleGrouped cellHeight:160];
+        _tableView = [[CommentTableView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height - 64) style:UITableViewStyleGrouped cellHeight:110];
         _tableView.tableViewEventDelegate = self;
         [_tableView registerNib:[UINib nibWithNibName:@"CommentTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableViewIdentifier];
         

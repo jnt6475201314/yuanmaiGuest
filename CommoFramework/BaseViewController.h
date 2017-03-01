@@ -83,8 +83,8 @@
 - (void)navOtherBtnClick:(UIButton *)button;
 
 //分享
-//- (void)shareQQAndWechat:(NSString *)urlStr;
-//- (void)shareController:(NSString *)shareText withImage:(NSString *)shareImage;
-//- (void)shareSheetView:(NSString *)shareText withImage:(NSString *)shareImage;
+- (void)shareQQAndWechat:(NSString *)urlStr;
+- (void)shareController:(NSString *)shareText withImage:(NSString *)shareImage;
+- (void)shareSheetView:(NSString *)shareText withImage:(NSString *)shareImage;
 
 @end

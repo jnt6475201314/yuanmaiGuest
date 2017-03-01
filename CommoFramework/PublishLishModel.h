@@ -20,9 +20,7 @@
 @property (nonatomic, copy) NSString<Optional> * state;  // 货单状态
 @property (nonatomic, copy) NSString<Optional> * uid;  //
 @property (nonatomic, copy) NSString<Optional> * planned_time; // 装货时间
-//@property (nonatomic, copy) NSString<Optional> * deliver_name;  // 发货人姓名
-//@property (nonatomic, copy) NSString<Optional> * deliver_tel;  // 发货人电话
-//@property (nonatomic, copy) NSString<Optional> * forwarding_unit; // 发货单位
+@property (nonatomic, copy) NSString<Optional> * driver_id;  // 司机id
 @property (nonatomic, copy) NSString<Optional> * gid; // 收货单位
 @property (nonatomic, copy) NSString<Optional> * add_time;  // 发布货源信息的时间
 

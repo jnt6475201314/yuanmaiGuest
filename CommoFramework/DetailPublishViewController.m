@@ -9,14 +9,10 @@
 #import "DetailPublishViewController.h"
 
 @interface DetailPublishViewController ()<UIWebViewDelegate>
+{
+    UIButton * _actionButton;   // 操作按钮
+}
 @property (nonatomic, strong) UIWebView * webView;
-//{
-//    UIButton * _repeatButton;  // 重发按钮
-//    UIButton * _deleteButton;  // 删除按钮
-//    
-//    UIView * _TopBackView1;  // 顶部背景1
-//    UIView * _BottomBackView3;  // 底部背景3
-//}
 
 @end
 
@@ -32,7 +28,7 @@
 
 - (void)configUI
 {
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height - 64)];
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height - 110)];
     self.webView.delegate = self;
     self.webView.userInteractionEnabled = YES;
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:API_PushlishDetailWithGid(self.publishModel.gid)]];
@@ -40,6 +36,38 @@
     [self.view addSubview:self.webView];
     
     [self showHUD:@"数据加载中，请稍候。。。" isDim:YES];
+    
+    _actionButton = [UIButton buttonWithFrame:CGRectMake(screen_width/2 - 60, screen_height - 42, 120, 40) title:@"删除发布信息" image:@"" target:self action:@selector(actionButtonEvent:)];
+    _actionButton.backgroundColor = red_color;
+    _actionButton.layer.cornerRadius = 10;
+    _actionButton.clipsToBounds = YES;
+    [_actionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:_actionButton];
+}
+
+- (void)actionButtonEvent:(UIButton *)actionBtn
+{
+    NSDictionary * params = @{@"gid":self.publishModel.gid, @"uid":GETUID};
+    NSLog(@"%@?oid=%@", API_DeletePublishInfo_URL, self.publishModel.gid);
+    [NetRequest postDataWithUrlString:API_DeletePublishInfo_URL withParams:params success:^(id data) {
+        
+        NSLog(@"%@", data);
+        if ([data[@"code"] isEqualToString:@"1"]) {
+            [self showTipView:data[@"message"]];
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                [_actionButton setTitle:@"删除信息成功" forState:UIControlStateNormal];
+                _actionButton.backgroundColor = [UIColor lightGrayColor];
+                _actionButton.enabled = NO;
+            }];
+        }else if([data[@"code"] isEqualToString:@"2"]){
+            [self showTipView:data[@"message"]];
+        }
+        NSLog(@"删除该信息成功！");
+    } fail:^(id errorDes) {
+        NSLog(@"删除信息失败！ 失败原因：%@", errorDes);
+        [self showTipView:@"删除发布信息失败！请检查网络状态或稍后重试。"];
+    }];
 }
 
 #pragma mark - UIWebViewDelegate

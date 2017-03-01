@@ -248,6 +248,11 @@ THE SOFTWARE.
 
 
 
+## UMengSocial
+
+Copyright 2011 - 2015 UMeng.com. All rights reserved.
+
+
 ## ZBarSDK
 
 		  GNU LESSER GENERAL PUBLIC LICENSE

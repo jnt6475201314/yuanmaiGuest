@@ -71,8 +71,8 @@
 #define YOUMENG_QQ_ID @"1105938205"
 #define YOUMENG_QQ_KEY @"6msUeDZZbAIKU5Ey"
 //------WX-------
-#define WEIXIN_ID @"wx38871b3f2cfd353d"
-#define WEIXIN_KEY @"db426a9829e4b49a0dcac7b4162da6b6"
+#define WEIXIN_ID @"wxf8d5e65f7981db80"
+#define WEIXIN_KEY @"2afaf80969179b5a3783df5372500b94"
 //------WB-------
 #define YOUMENG_WEIBO_KEY @"1312967830"
 

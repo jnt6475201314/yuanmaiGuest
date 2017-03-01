@@ -29,6 +29,7 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - UMengSocial (4.4)
   - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.0.6)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.7.2)
+  - UMengSocial (~> 4.3)
   - ZBarSDK (~> 1.3.1)
 
 SPEC CHECKSUMS:
@@ -57,8 +59,9 @@ SPEC CHECKSUMS:
   MJRefresh: fafde8f18f4afd66b434331a9beb67a6c0264056
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 9fa78881ef9108f536d1e785797365b363f83bd8
+PODFILE CHECKSUM: c9b5388189646af73ff1113ef8cdd4b9d569fbe2
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
