@@ -194,9 +194,7 @@
     NSLog(@"提交建议");
     if (suggestTV.text.length > 0) {
         _params = [[NSMutableDictionary alloc] init];
-        NSDictionary * data = [[NSUserDefaults standardUserDefaults] objectForKey:@"data"];
-        NSString * line_id = data[@"line_id"];  // 专线名称
-        [_params setValue:line_id forKey:@"line_id"];
+        [_params setValue:GETUID forKey:@"uid"];
         [_params setValue:suggestTV.text forKey:@"content"];
         NSLog(@"%@ --  %@", _params[@"line_id"], _params[@"content"]);
         NSInteger count = self.imageArray.count;
@@ -257,9 +255,8 @@
 
 - (void)NetWorkOfSendSuggest{
     [self showHUD:@"正在上传，请稍候" isDim:YES];
-    NSString * urlStr = @"http://202.91.248.43/project/index.php/Admin/Appline/feedback";
-    NSLog(@"%@?%@", urlStr, _params);
-    [NetRequest postDataWithUrlString:urlStr withParams:_params success:^(id data) {
+    NSLog(@"%@?%@", API_Suggestion_URL, _params);
+    [NetRequest postDataWithUrlString:API_Suggestion_URL withParams:_params success:^(id data) {
         [self hideHUD];
         NSLog(@"%@", data);
         if ([data[@"code"] isEqualToString:@"1"]) {

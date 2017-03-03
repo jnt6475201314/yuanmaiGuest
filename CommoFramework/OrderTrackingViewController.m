@@ -35,17 +35,23 @@
     _mapView = [[MapView alloc] initWithFrame:CGRectMake(0, 64, screen_width, screen_height - 64)];
     [self.view addSubview:_mapView];
     
+    NSLog(@"send:%@, arrived:%@", self.orderModel.send, self.orderModel.arrival_address);
     Place * p1 = [[Place alloc] init];
-    p1.name = self.orderModel.address_f;
+    p1.name = self.orderModel.send;
     p1.description = @"出发地";
     
     Place * p2 = [[Place alloc] init];
-    p2.name = self.orderModel.address_s;
+    p2.name = self.orderModel.arrival_address;
     p2.description = @"目的地";
     
     
     Place * p3 = [[Place alloc] init];
-    p3.name = self.orderModel.address_s;
+    if (_currentAddress) {
+        p3.name = _currentAddress;
+    }else
+    {
+        [self showTipView:@"获取司机位置失败！司机可能关机或不在服务区。"];
+    }
     p3.description = @"司机位置";
     
     

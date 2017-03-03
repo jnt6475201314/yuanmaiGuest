@@ -7,10 +7,11 @@
 //
 
 #import "BaseViewController.h"
-#import "OrderListModel.h"
+#import "PublishLishModel.h"
 
 @interface OrderTrackingViewController : BaseViewController
 
-@property (nonatomic, strong) OrderListModel * orderModel;
+@property (nonatomic, strong) PublishLishModel * orderModel;
+@property (nonatomic, strong) NSString * currentAddress;
 
 @end

@@ -31,7 +31,7 @@
 @property (nonatomic, copy) NSString<Optional> * pid; //    评论的id
 
 
-@property (nonatomic, copy) NSString<Optional> * stars;  // 评价星级
+@property (nonatomic, copy) NSString<Optional> * state_time;  // 到达时间
 @property (nonatomic, copy) NSString<Optional> * content;  // 评价内容
 
 // 少了审核通过状态、到达日期、交易情况：交易量和发货量

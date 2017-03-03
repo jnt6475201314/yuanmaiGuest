@@ -240,7 +240,7 @@
 - (void)commentNetWorkEvent{
     if (_comments != 0) {
         NSString * comments = [NSString stringWithFormat:@"%f", _comments];
-        NSDictionary * params = @{@"uid":GETUID, @"driver_id":_commentModel.driver_id, @"star":comments,@"distinguish":@"1", @"gid":_commentModel.gid, @"content":_commentTextView.text};
+        NSDictionary * params = @{@"uid":GETUID, @"driver_id":_commentModel.driver_id, @"star":comments, @"gid":_commentModel.gid, @"content":_commentTextView.text};
         NSLog(@"%@?%@", API_CommentOrder_URL, params);
         [NetRequest postDataWithUrlString:API_CommentOrder_URL withParams:params success:^(id data) {
 

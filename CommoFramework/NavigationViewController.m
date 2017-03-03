@@ -19,6 +19,8 @@
     UITextField * _destinationTF; // 终点🏁
     
     UIButton * _startNavigation; // 获取导航路线的按钮
+    
+    UIButton * _countDistans;
 }
 
 @property (nonatomic, strong) CLLocationManager * locManager;
@@ -56,6 +58,101 @@
     [_startNavigation setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_startNavigation addTarget:self action:@selector(startNavigationEvent) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_startNavigation];
+    
+    _countDistans = [[UIButton alloc] initWithFrame:CGRectMake(20, _startNavigation.bottom + 40, screen_width - 40, 40)];
+    [_countDistans setTitle:@"计算里程" forState:UIControlStateNormal];
+    _countDistans.backgroundColor = [UIColor blueColor];
+    [_countDistans setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_countDistans addTarget:self action:@selector(countDistansEvent) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_countDistans];
+}
+
+- (void)countDistansEvent
+{
+    // 1. 获取用户输入的起点终点
+    NSString * startStr = _startTF.text;
+    NSString * destinationStr = _destinationTF.text;
+    
+    if (startStr == nil || startStr.length == 0 || destinationStr == nil || destinationStr.length == 0) {
+        [MBProgressHUD showError:@"请输入地址"];
+    }else
+    {
+        __block CLLocation * startLocation;
+        
+        [self.geocoder geocodeAddressString:_startTF.text completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (error!=nil || placemarks.count==0) {
+                return ;
+            }
+            //创建placemark对象
+            CLPlacemark *placemark=[placemarks firstObject];
+            //经度
+            NSString *longitude =[NSString stringWithFormat:@"%f",placemark.location.coordinate.longitude];
+            //纬度
+            NSString *latitude =[NSString stringWithFormat:@"%f",placemark.location.coordinate.latitude];
+            
+            NSLog(@"经度：%@，纬度：%@",longitude,latitude);
+            startLocation = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+        }];
+        
+        __block CLLocation * destinationLocation;
+        
+        CLGeocoder * geo = [[CLGeocoder alloc] init];
+        [geo geocodeAddressString:_destinationTF.text completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (error!=nil || placemarks.count==0) {
+                return ;
+            }
+            //创建placemark对象
+            CLPlacemark *placemark=[placemarks firstObject];
+            //经度
+            NSString *longitude =[NSString stringWithFormat:@"%f",placemark.location.coordinate.longitude];
+            //纬度
+            NSString *latitude =[NSString stringWithFormat:@"%f",placemark.location.coordinate.latitude];
+            
+            NSLog(@"经度：%@，纬度：%@",longitude,latitude);
+            destinationLocation = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+        }];
+        
+        [self showHUD:@"正在计算，请稍候。。。" isDim:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            int distanceMeters = [destinationLocation distanceFromLocation:startLocation];
+            NSString * distansKM = [NSString stringWithFormat:@"%d KM",distanceMeters/1000];    //公里
+            NSLog(@"出发地：%@ 出发地经纬度：%@, 目的地：%@，目的地经纬度：%@，距离是：%@千米", startStr,startLocation, destinationStr, destinationLocation, distansKM);
+            [self hideHUD];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self showTipView:[NSString stringWithFormat:@"两地的距离是：%@", distansKM]];
+            });
+        });
+        
+    }
+    
+}
+
+/**
+ 地理编码
+ */
+- (CLLocation *)geocoderWithAddressStr:(NSString *)addressStr {
+    
+    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
+    
+//    NSString *addressStr = @"广东省深圳市宝安区";//位置信息
+    __block CLLocation * location;
+    
+    [geocoder geocodeAddressString:addressStr completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (error!=nil || placemarks.count==0) {
+            return ;
+        }
+        //创建placemark对象
+        CLPlacemark *placemark=[placemarks firstObject];
+        //经度
+        NSString *longitude =[NSString stringWithFormat:@"%f",placemark.location.coordinate.longitude];
+        //纬度
+        NSString *latitude =[NSString stringWithFormat:@"%f",placemark.location.coordinate.latitude];
+        
+        NSLog(@"经度：%@，纬度：%@",longitude,latitude);
+        location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    }];
+    
+    return location;
 }
 
 #pragma mark - myAddrBtnEvent

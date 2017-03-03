@@ -264,7 +264,7 @@
         newAnnotation.image = [UIImage imageNamed:@"pub_detail_startImg"];
         
     }else if ([[annotation title] isEqualToString:@"司机当前位置"]){
-        newAnnotation.image = [UIImage imageNamed:@"map_truck_blue"];
+        newAnnotation.image = [UIImage imageNamed:@"map_truck"];
     }
     newAnnotation.canShowCallout=YES;
     return newAnnotation;

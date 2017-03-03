@@ -28,7 +28,7 @@
     cell.Comment_goodSize.text = model.cube;
     cell.Comment_goodsType.text = model.goods_type;
     cell.Comment_goodsWeight.text = model.total_weight;
-    cell.Comment_arriveTime.text = [NSString stringWithFormat:@"到达时间：%@", model.add_time];
+    cell.Comment_arriveTime.text = [NSString stringWithFormat:@"到达时间：%@", model.state_time];
     
     return cell;
 }

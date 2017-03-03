@@ -7,7 +7,6 @@
 //
 
 #import "DetailOrderViewController.h"
-
 #import "OrderTrackingViewController.h"  // 订单追踪
 
 @interface DetailOrderViewController ()<UIWebViewDelegate>
@@ -51,10 +50,41 @@
     if ([self.orderModel.state isEqualToString:@"运输中"]) {
         [_actionButton setTitle:@"确认到达" forState:UIControlStateNormal];
         _actionButton.backgroundColor = [UIColor blueColor];
+        
+        [self showRightBtn:CGRectMake(screen_width-75, 24, 70, 36) withFont:systemFont(16) withTitle:@"订单追踪" withTitleColor:[UIColor whiteColor]];
     }else if ([self.orderModel.state isEqualToString:@"已到达"]) {
         [_actionButton setTitle:@"删除订单" forState:UIControlStateNormal];
 //        [_params setObject:@"13" forKey:@"state"];
     }
+}
+
+- (void)navRightBtnClick:(UIButton *)button
+{
+    OrderTrackingViewController * orderTrackingVC = [[OrderTrackingViewController alloc] init];
+    orderTrackingVC.orderModel = self.orderModel;
+    [self showHUD:@"正在加载，请稍候。。。" isDim:YES];
+    NSLog(@"%@?%@", API_DriverCurrentLocation_URL, @{@"driver_id":self.orderModel.driver_id});
+    [NetRequest postDataWithUrlString:API_DriverCurrentLocation_URL withParams:@{@"driver_id":self.orderModel.driver_id} success:^(id data) {
+        
+        [self hideHUD];
+        NSLog(@"%@", data);
+        if ([data[@"code"] isEqualToString:@"1"]) {
+            orderTrackingVC.currentAddress = data[@"data"][@"position"];
+            [self.navigationController pushViewController:orderTrackingVC animated:YES];
+        }else
+        {
+            [self showTipView:data[@"message"]];
+            NSLog(@"请求司机位置失败，message：%@", data[@"message"]);
+            [self.navigationController pushViewController:orderTrackingVC animated:YES];
+        }
+    } fail:^(NSString *errorDes) {
+        [self hideHUD];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self showTipView:@"获取司机当前位置失败！请稍候重试。"];
+        });
+        NSLog(@"%@", errorDes);
+    }];
+    
 }
 
 - (void)actionButtonEvent:(UIButton *)actionBtn

@@ -8,11 +8,9 @@
 
 #import "BaseViewController.h"
 #import "PublishLishModel.h"
-#import "DriverInfoModel.h"
 
 @interface DetailOrderViewController : BaseViewController
 
 @property (nonatomic, strong) PublishLishModel * orderModel;  // 运单模型
-//@property (nonatomic, strong) DriverInfoModel * driverModel;  // 司机信息模型
 
 @end
