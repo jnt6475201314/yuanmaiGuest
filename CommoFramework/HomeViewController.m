@@ -93,14 +93,13 @@
     // 本地加载 --- 创建不带标题的图片轮播器
     _headerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, 320*widthScale, 137*heightScale) delegate:self placeholderImage:[UIImage imageNamed:@"placeHolderImg"]];
     // 情景二： 网络接口获取图片
-    // 情景二： 网络接口获取图片
-    NSMutableArray * imgStrData = [[NSMutableArray alloc] init]; ;
+    NSMutableArray * imgStrData = [[NSMutableArray alloc] init];
+    NSLog(@"%@", API_HOME_GETCYCLEIMG_URL);
     [NetRequest postDataWithUrlString:API_HOME_GETCYCLEIMG_URL withParams:nil success:^(id data) {
         
         NSLog(@"%@", data);
-        NSString * headUrl = @"http://202.91.248.43/Public/Uploads/carousel_figure/";
         for (NSDictionary * dict in data[@"data"]) {
-            NSString * urlStr = [headUrl stringByAppendingString:dict[@"img"]];
+            NSString * urlStr = [data[@"aa"] stringByAppendingString:dict[@"img"]];
             [imgStrData addObject:urlStr];
         }
         

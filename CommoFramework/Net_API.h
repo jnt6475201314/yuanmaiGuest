@@ -23,7 +23,9 @@
 //#define GETDeviceToken [UserDefaults objectForKey:@"deviceToken"]
 
 #if 1   // 测试时使用的
-#define CommonHeadUrl @"http://139.199.219.224/test/Admin/"
+//#define CommonHeadUrl @"http://139.199.219.224/test/Admin/"
+
+#define CommonHeadUrl @"https://ymapp.yuanmaiwuliu.com/Admin/"
 #endif
 
 #if 0   // 上线时使用的
@@ -33,11 +35,10 @@
 #define CHECK_TokenStr_UrlStr [NSString stringWithFormat:@"%@AppCustomer/verify", CommonHeadUrl]  // 检查异地登录
 #define API_GetPushStr_URL [NSString stringWithFormat:@"%@AppCustomer/GetDevice", CommonHeadUrl]  // 获取推送别名
 //
-#define guideCommonHeadUrl @"http://139.196.29.1/test/"
-#define API_GETGUIDANCEIMAGE_URL [NSString stringWithFormat:@"%@/Admin/Applineorder/guideImage", guideCommonHeadUrl]     // 引导页图片
-#define API_guideheadImageUrl [NSString stringWithFormat:@"%@Public/Admin_Uploads/guide_image/", guideCommonHeadUrl]
-#define API_HOME_GETCYCLEIMG_URL @"http://202.91.248.43/Admin/Appline/carousel_figure"  // 获取轮播图片
-//
+#define API_GETGUIDANCEIMAGE_URL [NSString stringWithFormat:@"%@AppPublic/guideImage", CommonHeadUrl]     // 引导页图片
+
+#define API_HOME_GETCYCLEIMG_URL [NSString stringWithFormat:@"%@AppPublic/carousel_figure", CommonHeadUrl]  // 获取轮播图片
+
 #define API_LOGIN_URL [NSString stringWithFormat:@"%@App/login.html", CommonHeadUrl]  // 登录
 #define API_GetVerifyCode_URL [NSString stringWithFormat:@"%@App/code.html", CommonHeadUrl]  // 获取验证码
 #define API_ForgetPasswords_URL [NSString stringWithFormat:@"%@App/customer_password.html", CommonHeadUrl]  // 忘记密码

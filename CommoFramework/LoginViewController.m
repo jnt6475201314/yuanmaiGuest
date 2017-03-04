@@ -67,7 +67,7 @@
     _telTF.background = [UIImage imageNamed:@"login_TF_bgImg"];
     _telTF.textColor = [UIColor whiteColor];
     _telTF.returnKeyType = UIReturnKeyNext;
-    _telTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    _telTF.keyboardType = UIKeyboardTypeNumberPad;
     [self.view addSubview:_telTF];
     
     UIImageView * rightImgView = [UIImageView imageViewWithFrame:CGRectMake(10, 10, 20, 22) image:@"login_TF_pwdImg"];

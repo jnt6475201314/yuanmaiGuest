@@ -223,7 +223,7 @@
 - (void)sendMessage{
     
 //    NSString * urlStr = [URLSTRING stringByAppendingString:@"code.html"];
-    NSDictionary * params = @{@"user_name":_telTF.text};
+    NSDictionary * params = @{@"user_name":_telTF.text, @"type":@"kehu"};
     NSLog(@"%@?user_name=%@", API_GetVerifyCode_URL, _telTF.text);
     [NetRequest postDataWithUrlString:API_GetVerifyCode_URL withParams:params success:^(id data) {
         

@@ -1,14 +1,14 @@
 //
 //  ViewController.h
-//  CommoFramework
+//  SpecialLine
 //
-//  Created by 姜宁桃 on 2016/10/11.
+//  Created by 姜宁桃 on 2016/12/30.
 //  Copyright © 2016年 姜宁桃. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@protocol btnCliekDelegate <NSObject>
+@protocol btnClickDelegate <NSObject>
 
 - (void)btnhaveClicked;
 
@@ -16,7 +16,7 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, weak)id<btnCliekDelegate> clickDelegate;
+@property (nonatomic,weak)id<btnClickDelegate> clickDelegate;
 
 @end
 

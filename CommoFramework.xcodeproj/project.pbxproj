@@ -115,6 +115,7 @@
 		FD635F641DD320A5008E682D /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD635F631DD320A5008E682D /* NavigationViewController.m */; };
 		FD635F681DD3217E008E682D /* MHTransformCorrdinate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD635F671DD3217E008E682D /* MHTransformCorrdinate.m */; };
 		FD635F6B1DD321B6008E682D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = FD635F6A1DD321B6008E682D /* MBProgressHUD+MJ.m */; };
+		FD76D05B1E6A682000A19C23 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D05A1E6A682000A19C23 /* ViewController.m */; };
 		FD88CD091DB0B77C001703B3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD88CD081DB0B77C001703B3 /* BaseViewController.m */; };
 		FD8958E31E63CC800007C535 /* NewRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8958E21E63CC800007C535 /* NewRegisterViewController.m */; };
 		FD8958E91E640AB80007C535 /* jcore-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8958E61E640AB80007C535 /* jcore-ios-1.1.0.a */; };
@@ -141,7 +142,6 @@
 		FDB78EE61DBDB8F700368692 /* area1.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDB78EE51DBDB8F700368692 /* area1.plist */; };
 		FDEEF9591DAC73F500CCACE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEEF9581DAC73F500CCACE6 /* main.m */; };
 		FDEEF95C1DAC73F500CCACE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEEF95B1DAC73F500CCACE6 /* AppDelegate.m */; };
-		FDEEF95F1DAC73F500CCACE6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEEF95E1DAC73F500CCACE6 /* ViewController.m */; };
 		FDEEF9621DAC73F500CCACE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDEEF9601DAC73F500CCACE6 /* Main.storyboard */; };
 		FDEEF9641DAC73F500CCACE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDEEF9631DAC73F500CCACE6 /* Assets.xcassets */; };
 		FDEEF9671DAC73F500CCACE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDEEF9651DAC73F500CCACE6 /* LaunchScreen.storyboard */; };
@@ -378,6 +378,8 @@
 		FD635F671DD3217E008E682D /* MHTransformCorrdinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTransformCorrdinate.m; sourceTree = "<group>"; };
 		FD635F691DD321B6008E682D /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		FD635F6A1DD321B6008E682D /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		FD76D0591E6A682000A19C23 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FD76D05A1E6A682000A19C23 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FD88CD061DB0B469001703B3 /* CommonWork.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWork.pch; sourceTree = "<group>"; };
 		FD88CD071DB0B77C001703B3 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		FD88CD081DB0B77C001703B3 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -415,8 +417,6 @@
 		FDEEF9581DAC73F500CCACE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FDEEF95A1DAC73F500CCACE6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FDEEF95B1DAC73F500CCACE6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FDEEF95D1DAC73F500CCACE6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FDEEF95E1DAC73F500CCACE6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FDEEF9611DAC73F500CCACE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FDEEF9631DAC73F500CCACE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDEEF9661DAC73F500CCACE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1086,8 +1086,8 @@
 				FD8958EF1E640D620007C535 /* CommoFramework.entitlements */,
 				FDEEF95A1DAC73F500CCACE6 /* AppDelegate.h */,
 				FDEEF95B1DAC73F500CCACE6 /* AppDelegate.m */,
-				FDEEF95D1DAC73F500CCACE6 /* ViewController.h */,
-				FDEEF95E1DAC73F500CCACE6 /* ViewController.m */,
+				FD76D0591E6A682000A19C23 /* ViewController.h */,
+				FD76D05A1E6A682000A19C23 /* ViewController.m */,
 				FD88CD001DB0AD0C001703B3 /* Models */,
 				FD88CCFF1DB0AD01001703B3 /* Views */,
 				FD88CCFD1DB0ACE3001703B3 /* BaseController */,
@@ -1371,7 +1371,6 @@
 				FD2BD0721DC8288100288C71 /* DriverListDetailViewController.m in Sources */,
 				FD50F9601DB8655F003E288F /* PublishLishModel.m in Sources */,
 				FD1F3C421DB49EC600CC9A9D /* HOMEMenuViewController.m in Sources */,
-				FDEEF95F1DAC73F500CCACE6 /* ViewController.m in Sources */,
 				FD2D339A1DC194CD00ABE3BA /* PublishGoodsViewController.m in Sources */,
 				FD1F3C531DB4B3D500CC9A9D /* MessagesViewController.m in Sources */,
 				FD41D49E1DC3302200B8077A /* HomeTableViewCell.m in Sources */,
@@ -1447,6 +1446,7 @@
 				FD31E4EB1DB9F39900A4245F /* IDentityTableView.m in Sources */,
 				FD635F461DD2BD62008E682D /* DriverInfoModel.m in Sources */,
 				FD138ECC1DB0BD5400D73FCE /* MYFactoryManager.m in Sources */,
+				FD76D05B1E6A682000A19C23 /* ViewController.m in Sources */,
 				FD987AD31DED245100B72522 /* JntDropView.m in Sources */,
 				FDFC1D341DCB3E420040772E /* DetailOrderViewController.m in Sources */,
 				FD36D6A01DC05F3E00D28A2B /* PublishInfoModel.m in Sources */,

@@ -67,8 +67,8 @@
     NSArray * senderPhArr = @[@"请填写发货单位", @"请填写发货人姓名", @"请填写联系方式", @"请选择发货地址", @"请完善发货人信息"];
     NSArray * getterTitleArr = @[@"收货单位", @"姓名", @"联系方式", @"收货地址"];
     NSArray * getterPhArr = @[@"请填写收货单位", @"请填写收货人姓名", @"请填写联系方式", @"请选择收货地址", @"请完善收货人信息"];
-    NSArray * goodsTitleArr = @[@"货物体积", @"货物重量", @"货物类型", @"发货时间"];
-    NSArray * goodsPhArr = @[@"请填写货物大概体积", @"请输入货物大概重量", @"请选择货物基本类型", @"请选择发货时间", @"请完善货物基本信息"];
+    NSArray * goodsTitleArr = @[@"货物重量", @"货物体积", @"货物类型", @"发货时间"];
+    NSArray * goodsPhArr = @[@"请填写货物大概重量", @"请输入货物大概体积", @"请选择货物基本类型", @"请选择发货时间", @"请完善货物基本信息"];
     [self.dataDict setObject:senderTitleArr forKey:SENDERTITLEARRAY];
     [self.dataDict setObject:senderPhArr forKey:SENDERPHARRAY];
     
@@ -385,18 +385,18 @@
             case 40:
                 //
                 if (textField.text.length != 0) {
-                    self.publishModel.goods_volume = [NSString stringWithFormat:@"%@%@", textField.text, _unitOfWeight];
-                }else
-                {
-                    self.publishModel.goods_volume = nil;
+                    self.publishModel.goods_loads = [NSString stringWithFormat:@"%@%@", textField.text, _unitOfWeight];
+                }else{
+                    self.publishModel.goods_loads = nil;
                 }
                 break;
             case 41:
                 //
                 if (textField.text.length != 0) {
-                    self.publishModel.goods_loads = [NSString stringWithFormat:@"%@方", textField.text];
-                }else{
-                    self.publishModel.goods_loads = nil;
+                    self.publishModel.goods_volume = [NSString stringWithFormat:@"%@方", textField.text];
+                }else
+                {
+                    self.publishModel.goods_volume = nil;
                 }
                 break;
             

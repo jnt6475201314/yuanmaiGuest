@@ -14,7 +14,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-@interface AppDelegate ()<btnCliekDelegate, JPUSHRegisterDelegate>
+@interface AppDelegate ()<btnClickDelegate, JPUSHRegisterDelegate>
 
 @end
 
