@@ -46,23 +46,19 @@
 
 - (void)uploadPushInfoToServer
 {
+    NSString * registrationID = [JPUSHService registrationID];
+    NSLog(@"registrationID:%@", registrationID);
+    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+        
+        NSLog(@"resCode:%d, registrationID:%@", resCode, registrationID);
+    }];
+    
     if (GETDeviceToken) {
-        NSLog(@"%@?%@", API_GetPushStr_URL, @{@"uid":GETUID, @"device_token":GETDeviceToken});
-        [NetRequest postDataWithUrlString:API_GetPushStr_URL withParams:@{@"uid":GETUID, @"device_token":GETDeviceToken} success:^(id data) {
+        NSDictionary * pushParams= @{@"uid":GETUID, @"device_token":GETDeviceToken, @"type":@"kehu", @"registrationID":registrationID};
+        NSLog(@"%@?%@", API_uploadPushStr_URL, pushParams);
+        [NetRequest postDataWithUrlString:API_uploadPushStr_URL withParams:pushParams success:^(id data) {
             
-            NSLog(@"%@", data);
-            if ([data[@"code"] isEqualToString:@"1"]) {
-                NSString * tags = data[@"data"][@"tags"];   // 别名
-                NSLog(@"uploadPushInfoToServer data: %@, tags:%@", data, tags);
-                // 向极光和后台发送别名
-                [JPUSHService setTags:[NSSet setWithObject:@"yuanmaiClient"] alias:tags fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
-                    
-                    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
-                }];
-            }else
-            {
-                
-            }
+            NSLog(@"uploadPushInfoToServer data : %@", data);
         } fail:^(NSString *errorDes) {
             
             NSLog(@"获取别名失败");
@@ -79,7 +75,7 @@
     self.navView.backgroundColor = navBar_color;//color(67, 89, 224, 1);
     self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.text = @"远迈物流";
-    [self showRightBtn:CGRectMake(self.navView.width - 45*widthScale, 24, 40*widthScale, 36) withImage:@"nav_message_white" withImageWidth:24];
+//    [self showRightBtn:CGRectMake(self.navView.width - 45*widthScale, 24, 40*widthScale, 36) withImage:@"nav_message_white" withImageWidth:24];
     self.dataSource = [[NSMutableArray alloc] init];
     
     UIButton * leftNavBtn = [UIButton buttonWithFrame:CGRectMake(10, 26, 30, 30) title:nil image:@"personal_img" target:self action:@selector(leftNavBtnClicked)];

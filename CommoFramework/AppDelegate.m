@@ -92,7 +92,7 @@
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
                           channel:JPushChannel
-                 apsForProduction:NO];
+                 apsForProduction:YES];
     
 }
 

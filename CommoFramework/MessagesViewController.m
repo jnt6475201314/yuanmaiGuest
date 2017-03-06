@@ -24,6 +24,9 @@
 - (void)configUI{
     [self showBackBtn];
     self.titleLabel.text = @"消息";
+    
+//    [self showHUD:@"数据加载中。。。" isDim:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

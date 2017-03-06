@@ -11,7 +11,6 @@
 
 #pragma mark - API
 
-// 获取司机ID   driver_id
 #define GETData [UserDefaults objectForKey:@"data"]
 #define GETUID GETData[@"uid"]
 #define GETTOKEN_Str [UserDefaults objectForKey:@"token_str"]
@@ -20,7 +19,6 @@
 // 是否检测异地登录
 #define RELOGIN @"relogin"   //
 #define GetRELOGINStatus [UserDefaults objectForKey:RELOGIN]
-//#define GETDeviceToken [UserDefaults objectForKey:@"deviceToken"]
 
 #if 1   // 测试时使用的
 //#define CommonHeadUrl @"http://139.199.219.224/test/Admin/"
@@ -33,7 +31,7 @@
 #endif
 
 #define CHECK_TokenStr_UrlStr [NSString stringWithFormat:@"%@AppCustomer/verify", CommonHeadUrl]  // 检查异地登录
-#define API_GetPushStr_URL [NSString stringWithFormat:@"%@AppCustomer/GetDevice", CommonHeadUrl]  // 获取推送别名
+#define API_uploadPushStr_URL [NSString stringWithFormat:@"%@AppPublic/GetDevice", CommonHeadUrl]  // 上传推送信息到服务器
 //
 #define API_GETGUIDANCEIMAGE_URL [NSString stringWithFormat:@"%@AppPublic/guideImage", CommonHeadUrl]     // 引导页图片
 
