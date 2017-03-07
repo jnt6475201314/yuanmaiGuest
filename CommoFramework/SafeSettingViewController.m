@@ -48,10 +48,12 @@
         }else if (i == 1)
         {
             _oldPwdTF = TF;
+            _oldPwdTF.secureTextEntry = YES;
             _oldPwdTF.returnKeyType = UIReturnKeyNext;
         }else if (i == 2)
         {
             _newPwdTF = TF;
+            _newPwdTF.secureTextEntry = YES;
             _newPwdTF.returnKeyType = UIReturnKeyDone;
         }
     }
