@@ -44,9 +44,7 @@
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     }
     
-    if ([GetRELOGINStatus isEqualToString:@"YES"]) {
-        [self checkLoginEvnet];     // 允许检测异地登录
-    }
+    [self checkLoginEvnet];     // 允许检测异地登录
 }
 
 - (void)initNavView{
@@ -310,6 +308,7 @@
             NSLog(@"%@", data);
             if ([data[@"code"] isEqualToString:@"101"]) {
                 // 登陆正常
+                NSLog(@"未异地登录");
             }else
             {
                 // 异地登陆

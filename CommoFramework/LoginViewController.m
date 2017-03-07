@@ -270,6 +270,8 @@
             // 登陆成功
             NSLog(@"登陆成功");
             [self showTipView:data[@"message"]];
+            [UserDefaults setObject:data[@"aa"] forKey:@"token_str"];  // 存储token_str
+            [UserDefaults synchronize];
             NSLog(@"%@", data[@"data"]);
             [self saveUserInfo:data[@"data"]];
         }else if ([data[@"code"] isEqualToString:@"2"]){
@@ -288,7 +290,6 @@
 - (void)saveUserInfo:(NSDictionary *)data{
     [UserDefaults setObject:data forKey:@"data"];
     NSLog(@"%@", data);
-    [UserDefaults setObject:data[@"aa"] forKey:@"token_str"];  // 存储token_str
     [UserDefaults setObject:_telTF.text forKey:@"userName"];
     [UserDefaults setObject:_pwdTF.text forKey:_telTF.text];
     NSLog(@"%@", _pwdTF.text);
@@ -316,6 +317,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)checkLoginEvnet
+{
+    NSLog(@"不检测异地登录");
 }
 
 @end

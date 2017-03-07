@@ -61,7 +61,6 @@
 		FD1F3C3E1DB49D5A00CC9A9D /* JVFloatingDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F3C3B1DB49D5A00CC9A9D /* JVFloatingDrawerViewController.m */; };
 		FD1F3C421DB49EC600CC9A9D /* HOMEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F3C411DB49EC600CC9A9D /* HOMEMenuViewController.m */; };
 		FD1F3C481DB4A08000CC9A9D /* ForgotPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F3C451DB4A08000CC9A9D /* ForgotPwdViewController.m */; };
-		FD1F3C491DB4A08000CC9A9D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F3C471DB4A08000CC9A9D /* RegisterViewController.m */; };
 		FD1F3C4C1DB4A11600CC9A9D /* PresentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F3C4B1DB4A11600CC9A9D /* PresentBaseViewController.m */; };
 		FD1F3C4F1DB4A15700CC9A9D /* RegisterInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F3C4E1DB4A15700CC9A9D /* RegisterInfoModel.m */; };
 		FD1F3C531DB4B3D500CC9A9D /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F3C521DB4B3D500CC9A9D /* MessagesViewController.m */; };
@@ -276,8 +275,6 @@
 		FD1F3C411DB49EC600CC9A9D /* HOMEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOMEMenuViewController.m; sourceTree = "<group>"; };
 		FD1F3C441DB4A08000CC9A9D /* ForgotPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPwdViewController.h; sourceTree = "<group>"; };
 		FD1F3C451DB4A08000CC9A9D /* ForgotPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPwdViewController.m; sourceTree = "<group>"; };
-		FD1F3C461DB4A08000CC9A9D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		FD1F3C471DB4A08000CC9A9D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		FD1F3C4A1DB4A11600CC9A9D /* PresentBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentBaseViewController.h; sourceTree = "<group>"; };
 		FD1F3C4B1DB4A11600CC9A9D /* PresentBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentBaseViewController.m; sourceTree = "<group>"; };
 		FD1F3C4D1DB4A15700CC9A9D /* RegisterInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterInfoModel.h; sourceTree = "<group>"; };
@@ -796,8 +793,6 @@
 			children = (
 				FD1F3C441DB4A08000CC9A9D /* ForgotPwdViewController.h */,
 				FD1F3C451DB4A08000CC9A9D /* ForgotPwdViewController.m */,
-				FD1F3C461DB4A08000CC9A9D /* RegisterViewController.h */,
-				FD1F3C471DB4A08000CC9A9D /* RegisterViewController.m */,
 				FD8958E11E63CC800007C535 /* NewRegisterViewController.h */,
 				FD8958E21E63CC800007C535 /* NewRegisterViewController.m */,
 			);
@@ -1422,7 +1417,6 @@
 				FD138F001DB0C28D00D73FCE /* ScanViewController.m in Sources */,
 				FD138ED51DB0BDFB00D73FCE /* NetRequest.m in Sources */,
 				FD205F491DE3DA0C00CEE662 /* AddressModel.m in Sources */,
-				FD1F3C491DB4A08000CC9A9D /* RegisterViewController.m in Sources */,
 				FD138F4E1DB0C98D00D73FCE /* OrderCenterViewController.m in Sources */,
 				FD635F611DD31830008E682D /* Place.m in Sources */,
 				FD138EFE1DB0C28D00D73FCE /* QRView.m in Sources */,

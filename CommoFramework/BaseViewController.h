@@ -87,4 +87,8 @@
 - (void)shareController:(NSString *)shareText withImage:(NSString *)shareImage;
 - (void)shareSheetView:(NSString *)shareText withImage:(NSString *)shareImage;
 
+// 异地登录检测
+- (void)checkLoginEvnet;
+
+
 @end

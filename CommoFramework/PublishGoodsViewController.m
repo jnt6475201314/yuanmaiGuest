@@ -112,7 +112,7 @@
     for (int i=0; i<(int)picArr.count; i++) {
         
         view = [[UIView alloc] initWithFrame:CGRectMake(screen_width*i, 0, screen_width, scrollView.height)];
-        view.backgroundColor = arc_Color;
+        view.backgroundColor = [UIColor whiteColor]; //arc_Color;
         
         UITableView * table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, 226) style:UITableViewStylePlain];
         [table registerNib:[UINib nibWithNibName:@"TFTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableViewIdentifier];
@@ -122,9 +122,19 @@
         if (i == 0) {
             _tableView0 = table;
             [view addSubview:_tableView0];
+            
+            UILabel * reminderLab = [UILabel labelWithFrame:CGRectMake(60, table.bottom + 100, screen_width - 120, 40) text:@"左滑填写收货人信息 >>" font:15 textColor:[UIColor brownColor]];
+            reminderLab.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:reminderLab];
+            
         }else if (i == 1){
             _tableView1 = table;
             [view addSubview:_tableView1];
+            
+            UILabel * reminderLab = [UILabel labelWithFrame:CGRectMake(60, table.bottom + 100, screen_width - 120, 40) text:@"左滑填写货物信息 >>" font:15 textColor:[UIColor brownColor]];
+            reminderLab.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:reminderLab];
+            
         }else if (i == 2){
             _tableView2 = table;
             [view addSubview:_tableView2];

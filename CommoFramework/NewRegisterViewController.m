@@ -88,7 +88,7 @@
     if ([MYFactoryManager phoneNum:_telTF.text]) {
         sender.enabled = NO;
         //button type要 设置成custom 否则会闪动
-        [sender startCountDownWithSecond:10];
+        [sender startCountDownWithSecond:120];
         
         [sender countDownChanging:^NSString *(JKCountDownButton *countDownButton, NSUInteger second) {
             
@@ -264,6 +264,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)checkLoginEvnet
+{
+    NSLog(@"不检测异地登录");
 }
 
 @end

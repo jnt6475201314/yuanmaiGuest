@@ -38,7 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self headerRefreshingEvent];
     [self configUI];
     
     [self uploadPushInfoToServer];  // 上传推送数据到后台
@@ -162,6 +161,8 @@
         _tableView = [[HomeTableView alloc] initWithFrame:CGRectMake(0, 63, screen_width, screen_height - 110) style:UITableViewStyleGrouped cellHeight:100];
         [_tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableViewIdentifier];
         _tableView.tableViewEventDelegate = self;
+        [_tableView.mj_header removeFromSuperview];
+        [_tableView.mj_footer removeFromSuperview];
     }
     return _tableView;
 }
