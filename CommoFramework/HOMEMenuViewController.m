@@ -13,6 +13,8 @@
 #import "SuggestionViewController.h"
 #import "MyInfoViewController.h"
 #import "SafeSettingViewController.h"
+#import "AppQrCodeViewController.h"
+#import "SettingViewController.h"
 
 @interface HOMEMenuViewController ()
 
@@ -31,26 +33,66 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.opaque = NO;
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.bounces = NO;
+    self.tableView.showsHorizontalScrollIndicator = NO;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screen_width*0.618, 184.0f * heightScale)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(view.width/2-(136*widthScale*0.618)/2, 40*heightScale, 136*widthScale*0.618, 96*heightScale*0.618)];
         imageView.image = [UIImage imageNamed:@"yuanmaiLogo"];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, imageView.bottom + 10*heightScale, screen_width*0.618, 60)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, imageView.bottom + 5*heightScale, screen_width*0.618, 60)];
         label.text = [NSString stringWithFormat:@"%@\n%@", userData[@"nickname"], userData[@"user_name"]];
         label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
         label.backgroundColor = [UIColor clearColor];
-        label.textColor = arc_Color;//[UIColor lightGrayColor];
+        label.textColor = [UIColor purpleColor];//[UIColor lightGrayColor];
         label.numberOfLines=2;
         label.textAlignment = NSTextAlignmentCenter;
         label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(0, view.height-1, screen_width, 1)];
+        lineView.backgroundColor = [UIColor lightGrayColor];
         
         [view addSubview:imageView];
         [view addSubview:label];
+        [view addSubview:lineView];
+        view;
+    });
+    
+    self.tableView.tableFooterView = ({
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, screen_height - (self.view.height-self.tableView.tableHeaderView.height-250), screen_width*0.618, screen_height-self.tableView.tableHeaderView.height-250)];
+        view.backgroundColor = [UIColor lightGrayColor];
+        UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screen_width, 1)];
+        lineView.backgroundColor = [UIColor lightGrayColor];
+        UIButton * QRCodeBtn = [UIButton buttonWithFrame:CGRectMake(view.width - 45, view.height - 45*heightScale, 40, 40) title:nil image:@"qrCode" target:self action:@selector(QRCodeBtnEvent)];
+        
+        MyPicButton * _settingButton = [[MyPicButton alloc] initWithFrame:CGRectMake(0, view.height-45*heightScale, view.width - 60, 40)];
+        [_settingButton setBtnViewWithImage:@"setting" withImageWidth:40 withTitle:@"设置" withTitleColor:color(18, 150, 220, 1) withFont:boldSystemFont(17)];
+        [_settingButton setBtnselectImage:@"setting" withselectTitleColor:color(18, 150, 220, 1)];
+        [_settingButton setTitleColor:color(18, 150, 220, 1) forState:UIControlStateHighlighted];
+        [_settingButton addTarget:self action:@selector(settingButtonEvent) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:_settingButton];
+        
+        [view addSubview:QRCodeBtn];
+        [view addSubview:lineView];
         view;
     });
 
+}
+
+#pragma mark - Event Hander
+- (void)settingButtonEvent
+{
+    NSLog(@"setting");
+    SettingViewController * settingVC = [[SettingViewController alloc] init];
+    [self presentViewController:settingVC animated:YES completion:nil];
+}
+
+
+- (void)QRCodeBtnEvent
+{
+    AppQrCodeViewController * QRCodeVC = [[AppQrCodeViewController alloc] init];
+    [self presentViewController:QRCodeVC animated:YES completion:nil];
 }
 
 #pragma mark UITableView Delegate
@@ -58,8 +100,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor clearColor];
-//    cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-    cell.textLabel.textColor = [UIColor groupTableViewBackgroundColor];
+    cell.textLabel.textColor = [UIColor darkTextColor];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
 }
 
@@ -111,21 +152,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
 {
-    //    if (sectionIndex == 0)
-    return nil;
     
-    //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
-    //    view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
-    //
-    //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
-    //    label.text = @"Friends Online";
-    //    label.font = [UIFont systemFontOfSize:15];
-    //    label.textColor = [UIColor whiteColor];
-    //    label.backgroundColor = [UIColor clearColor];
-    //    [label sizeToFit];
-    //    [view addSubview:label];
-    //    
-    //    return view;
+    return nil;
 }
 
 #pragma mark -
@@ -155,12 +183,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
+    NSArray * images = @[@"personal", @"connectServer", @"suggestion", @"safeSet", @"logOut"];
     NSArray *titles = @[@"我的信息", @"联系客服", @"意见反馈",@"安全设置", @"退出登录"];
     cell.textLabel.text = titles[indexPath.section];
-    
-//    NSArray * images = @[@"per_myInfo", @"per_servicer", @"per_update", @"per_suggest", @"per_safe",@"per_logOut"];
-//    cell.imageView.image = [UIImage imageNamed:images[indexPath.section]];
+    cell.imageView.image = [UIImage imageNamed:images[indexPath.section]];
     
     return cell;
 }

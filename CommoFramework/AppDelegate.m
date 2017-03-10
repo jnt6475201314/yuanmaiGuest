@@ -34,6 +34,8 @@
         vc.clickDelegate = self;
         self.window.rootViewController = vc;
         [defaults setValue:@"YES" forKey:@"firstOpen"];
+        [UserDefaults setObject:@"YES" forKey:RELOGIN];
+        [UserDefaults synchronize];
     }else{
         [self initTabBar];
     }

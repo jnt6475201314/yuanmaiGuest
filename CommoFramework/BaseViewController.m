@@ -45,6 +45,7 @@
     }
     
     [self checkLoginEvnet];     // 允许检测异地登录
+    [self checkNotification];
 }
 
 - (void)initNavView{
@@ -75,7 +76,7 @@
     //    _titleLabel.textColor = color(0, 0, 0, 0.9);
     _titleLabel.textColor = [UIColor whiteColor];
     
-    UIImageView * navImgView = [UIImageView imageViewWithFrame:_navView.bounds image:@"nav_bgImg"];
+    UIImageView * navImgView = [UIImageView imageViewWithFrame:_navView.bounds image:@"Bar"];
     [_navView addSubview:navImgView];
     [_navView addSubview:_titleLabel];
     [self.view addSubview:_navView];
@@ -335,6 +336,20 @@
     LoginViewController * loginVC = [[LoginViewController alloc] init];
     AppDelegateInstance.window.rootViewController = loginVC;
 }
+
+- (void)checkNotification
+{
+    if (![MYFactoryManager isAllowedNotification]) {
+        // 不允许
+        [UserDefaults setObject:@"NO" forKey:NOTIFICATION];
+        [UserDefaults synchronize];
+    }else
+    {
+        [UserDefaults setObject:@"YES" forKey:NOTIFICATION];
+        [UserDefaults synchronize];
+    }
+}
+
 
 
 /**

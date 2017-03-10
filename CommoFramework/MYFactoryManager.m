@@ -8,6 +8,7 @@
 
 #import "MYFactoryManager.h"
 #import "GTMBase64.h"
+#import "UIDevice+deviceSystem.h"
 
 @implementation MYFactoryManager
 /**
@@ -412,6 +413,21 @@
     }
     
     return nil;
+}
+
++ (BOOL)isAllowedNotification {
+    //iOS8 check if user allow notification
+    if ([UIDevice isSystemVersioniOS8]) {// system is iOS8
+        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        if (UIUserNotificationTypeNone != setting.types) {
+            return YES;
+        }
+    } else {//iOS7
+        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+        if(UIRemoteNotificationTypeNone != type)
+            return YES;
+    }
+    return NO;
 }
 
 

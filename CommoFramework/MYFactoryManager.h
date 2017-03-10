@@ -65,4 +65,6 @@
 // 获取两个时间之间的时间差
 + (NSString *)counttIntervalOfCurrentTime:(NSString *)currentTime AndPastTime:(NSString *)time;
 
++ (BOOL)isAllowedNotification;
+
 @end

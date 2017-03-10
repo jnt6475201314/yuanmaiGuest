@@ -137,6 +137,10 @@
 		FD987ADC1DED287F00B72522 /* address.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD987AD91DED287F00B72522 /* address.plist */; };
 		FD987ADD1DED287F00B72522 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD987ADA1DED287F00B72522 /* city.plist */; };
 		FD987ADE1DED287F00B72522 /* province.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD987ADB1DED287F00B72522 /* province.plist */; };
+		FDA57AF81E7289160089C7F7 /* AppQrCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA57AF71E7289160089C7F7 /* AppQrCodeViewController.m */; };
+		FDA57AFB1E728D030089C7F7 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA57AFA1E728D030089C7F7 /* SettingViewController.m */; };
+		FDA57AFE1E728D6B0089C7F7 /* SettingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA57AFD1E728D6B0089C7F7 /* SettingTableView.m */; };
+		FDA57B011E728E400089C7F7 /* UIDevice+deviceSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA57B001E728E400089C7F7 /* UIDevice+deviceSystem.m */; };
 		FDA7E6F81DBF39480047E1EF /* CompanyIDentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA7E6F71DBF39480047E1EF /* CompanyIDentityViewController.m */; };
 		FDB78EE61DBDB8F700368692 /* area1.plist in Resources */ = {isa = PBXBuildFile; fileRef = FDB78EE51DBDB8F700368692 /* area1.plist */; };
 		FDEEF9591DAC73F500CCACE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEEF9581DAC73F500CCACE6 /* main.m */; };
@@ -407,6 +411,14 @@
 		FD987AD91DED287F00B72522 /* address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = address.plist; sourceTree = "<group>"; };
 		FD987ADA1DED287F00B72522 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		FD987ADB1DED287F00B72522 /* province.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = province.plist; sourceTree = "<group>"; };
+		FDA57AF61E7289160089C7F7 /* AppQrCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppQrCodeViewController.h; sourceTree = "<group>"; };
+		FDA57AF71E7289160089C7F7 /* AppQrCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppQrCodeViewController.m; sourceTree = "<group>"; };
+		FDA57AF91E728D030089C7F7 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		FDA57AFA1E728D030089C7F7 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		FDA57AFC1E728D6B0089C7F7 /* SettingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableView.h; sourceTree = "<group>"; };
+		FDA57AFD1E728D6B0089C7F7 /* SettingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableView.m; sourceTree = "<group>"; };
+		FDA57AFF1E728E400089C7F7 /* UIDevice+deviceSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+deviceSystem.h"; sourceTree = "<group>"; };
+		FDA57B001E728E400089C7F7 /* UIDevice+deviceSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+deviceSystem.m"; sourceTree = "<group>"; };
 		FDA7E6F61DBF39480047E1EF /* CompanyIDentityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyIDentityViewController.h; sourceTree = "<group>"; };
 		FDA7E6F71DBF39480047E1EF /* CompanyIDentityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyIDentityViewController.m; sourceTree = "<group>"; };
 		FDB78EE51DBDB8F700368692 /* area1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area1.plist; sourceTree = "<group>"; };
@@ -650,6 +662,8 @@
 			children = (
 				FD138F311DB0C52700D73FCE /* BaseTableView.h */,
 				FD138F321DB0C52700D73FCE /* BaseTableView.m */,
+				FDA57AFC1E728D6B0089C7F7 /* SettingTableView.h */,
+				FDA57AFD1E728D6B0089C7F7 /* SettingTableView.m */,
 				FD50F96E1DB8B1BD003E288F /* TableViewCell */,
 				FD3A751D1DB742F10042114B /* HomeTableView.h */,
 				FD3A751E1DB742F10042114B /* HomeTableView.m */,
@@ -802,8 +816,12 @@
 		FD1F3C5C1DB4CFE500CC9A9D /* DetailVCs */ = {
 			isa = PBXGroup;
 			children = (
+				FDA57AF61E7289160089C7F7 /* AppQrCodeViewController.h */,
+				FDA57AF71E7289160089C7F7 /* AppQrCodeViewController.m */,
 				FD1F3C661DB4EED800CC9A9D /* SafeSettingViewController.h */,
 				FD1F3C671DB4EED800CC9A9D /* SafeSettingViewController.m */,
+				FDA57AF91E728D030089C7F7 /* SettingViewController.h */,
+				FDA57AFA1E728D030089C7F7 /* SettingViewController.m */,
 				FD1F3C541DB4C35300CC9A9D /* SuggestionViewController.h */,
 				FD1F3C551DB4C35300CC9A9D /* SuggestionViewController.m */,
 				FD1F3C601DB4D08200CC9A9D /* MyInfoViewController.h */,
@@ -1011,6 +1029,8 @@
 				FD138ECE1DB0BD6E00D73FCE /* MyFMDataBase.m */,
 				FD138ECA1DB0BD5400D73FCE /* MYFactoryManager.h */,
 				FD138ECB1DB0BD5400D73FCE /* MYFactoryManager.m */,
+				FDA57AFF1E728E400089C7F7 /* UIDevice+deviceSystem.h */,
+				FDA57B001E728E400089C7F7 /* UIDevice+deviceSystem.m */,
 				FD138EC71DB0BD3300D73FCE /* QuickControl.h */,
 				FD138EC81DB0BD3300D73FCE /* QuickControl.m */,
 				FD138ED01DB0BDDC00D73FCE /* BLImageSize.h */,
@@ -1368,6 +1388,7 @@
 				FD1F3C421DB49EC600CC9A9D /* HOMEMenuViewController.m in Sources */,
 				FD2D339A1DC194CD00ABE3BA /* PublishGoodsViewController.m in Sources */,
 				FD1F3C531DB4B3D500CC9A9D /* MessagesViewController.m in Sources */,
+				FDA57AFB1E728D030089C7F7 /* SettingViewController.m in Sources */,
 				FD41D49E1DC3302200B8077A /* HomeTableViewCell.m in Sources */,
 				FD1F3C3D1DB49D5A00CC9A9D /* JVFloatingDrawerView.m in Sources */,
 				FD88CD091DB0B77C001703B3 /* BaseViewController.m in Sources */,
@@ -1396,6 +1417,7 @@
 				FD138EFF1DB0C28D00D73FCE /* QRViewController.m in Sources */,
 				FD138EE21DB0C00C00D73FCE /* SelectedView.m in Sources */,
 				FD635F571DD31723008E682D /* OrderTrackingViewController.m in Sources */,
+				FDA57AF81E7289160089C7F7 /* AppQrCodeViewController.m in Sources */,
 				FD138F3F1DB0C79B00D73FCE /* OnePicSelectView.m in Sources */,
 				FD5E09291DC7120C003CCAF2 /* CommentTableView.m in Sources */,
 				FD635F6B1DD321B6008E682D /* MBProgressHUD+MJ.m in Sources */,
@@ -1404,6 +1426,7 @@
 				FD8958E31E63CC800007C535 /* NewRegisterViewController.m in Sources */,
 				FD138F011DB0C28D00D73FCE /* UIView+Layout.m in Sources */,
 				FD138F1F1DB0C2A000D73FCE /* STConst.m in Sources */,
+				FDA57AFE1E728D6B0089C7F7 /* SettingTableView.m in Sources */,
 				FD138EBC1DB0BA6E00D73FCE /* navigationController.m in Sources */,
 				FD138F1D1DB0C2A000D73FCE /* STPickerDate.m in Sources */,
 				FD3A751C1DB73FCB0042114B /* HomeListModel.m in Sources */,
@@ -1446,6 +1469,7 @@
 				FD36D6A01DC05F3E00D28A2B /* PublishInfoModel.m in Sources */,
 				FD138F261DB0C2C600D73FCE /* UIViewController+XHPhoto.m in Sources */,
 				FDFC1D301DCB06640040772E /* DetailPublishViewController.m in Sources */,
+				FDA57B011E728E400089C7F7 /* UIDevice+deviceSystem.m in Sources */,
 				FD3A751F1DB742F10042114B /* HomeTableView.m in Sources */,
 				FD1F3C481DB4A08000CC9A9D /* ForgotPwdViewController.m in Sources */,
 				FD138EC31DB0BC2A00D73FCE /* MyAnimation.m in Sources */,
@@ -1622,6 +1646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yuanmaiwuliu.guest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1644,6 +1669,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yuanmaiwuliu.guest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

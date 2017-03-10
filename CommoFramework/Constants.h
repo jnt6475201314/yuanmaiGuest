@@ -81,9 +81,13 @@
 #define BASE_URL @"http://digwork.gzfwwl.com:8089/"
 //#define BASE_URL @"http://192.168.1.88:8080/Dig_Work/"
 
-#define SHAREAPP_URL @"http://digwork.gzfwwl.com:8089/erweima/appdown/index.jsp"
+#define SHAREAPP_URL @"https://itunes.apple.com/cn/app/远迈物流-客户版/id1210285299?mt=8"
 
 //token验证
 #define CHECK_TOKEN_URL [NSString stringWithFormat:@"%@%@",BASE_URL,@"user/chooseToken"]//验证token
+
+// 是否通知
+#define NOTIFICATION @"notification"   //
+#define GetNotificationStatus [UserDefaults objectForKey:NOTIFICATION]
 
 #endif /* Constants_h */
