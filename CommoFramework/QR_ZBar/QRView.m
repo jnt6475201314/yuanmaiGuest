@@ -44,7 +44,7 @@
     qrLine.image = [UIImage imageNamed:@"qr_scan_line"];
     qrLine.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:qrLine];
-    qrLineY = qrLine.frame.origin.y;
+    qrLineY = qrLine.frame.origin.y +32;
 }
 
 - (void)show {
@@ -52,7 +52,7 @@
     [UIView animateWithDuration:kQrLineanimateDuration animations:^{
         
         CGRect rect = qrLine.frame;
-        rect.origin.y = qrLineY;
+        rect.origin.y = qrLineY + 32;
         qrLine.frame = rect;
         
     } completion:^(BOOL finished) {

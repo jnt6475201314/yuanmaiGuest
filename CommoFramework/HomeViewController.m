@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "XWDragCellCollectionView.h"
 #import "CollectionViewCell.h"
-#import "ScanViewController.h"
+#import "ScanOrderViewController.h"
 #import "HomeTableViewCell.h"
 #import "HomeTableView.h"
 #import "HomeListModel.h"
@@ -272,8 +272,8 @@
 - (void)shareBtnEvent
 {
     [self shareQQAndWechat:SHAREAPP_URL];
-//    [self shareController:@"远迈物流 客户版 App下载" withImage:@"shareAppIcon"];
-    [self shareSheetView:@"远迈物流 客户版 App下载" withImage:@"shareAppIcon"];
+    [self shareController:@"远迈物流 客户版 App下载" withImage:@"shareAppIcon"];
+//    [self shareSheetView:@"远迈物流 客户版 App下载" withImage:@"shareAppIcon"];
 }
 
 #pragma mark - SDCycleScrollViewDelegate
@@ -378,7 +378,7 @@
 
 - (void)scanBtnEvent
 {
-    ScanViewController * scanVC = [[ScanViewController alloc] init];
+    ScanOrderViewController * scanVC = [[ScanOrderViewController alloc] init];
     [self.navigationController pushViewController:scanVC animated:YES];
 }
 

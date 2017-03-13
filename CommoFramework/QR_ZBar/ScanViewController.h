@@ -19,4 +19,6 @@
 @property (nonatomic,copy)void (^QRUrlBlock)(NSString *url);
 @property (nonatomic, strong) id<returnOrderNumDelegate>Odelegate;
 
+@property (nonatomic, copy) NSString * upVCTitle;
+
 @end

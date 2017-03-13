@@ -25,12 +25,6 @@
 		FD138EE51DB0C06200D73FCE /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EE41DB0C06200D73FCE /* UIPlaceHolderTextView.m */; };
 		FD138EE91DB0C11700D73FCE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EE81DB0C11700D73FCE /* LoginViewController.m */; };
 		FD138EEE1DB0C26C00D73FCE /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EEC1DB0C26C00D73FCE /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD138EFC1DB0C28D00D73FCE /* MyQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EF11DB0C28D00D73FCE /* MyQRCodeView.m */; };
-		FD138EFD1DB0C28D00D73FCE /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EF31DB0C28D00D73FCE /* QRCodeGenerator.m */; };
-		FD138EFE1DB0C28D00D73FCE /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EF51DB0C28D00D73FCE /* QRView.m */; };
-		FD138EFF1DB0C28D00D73FCE /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EF71DB0C28D00D73FCE /* QRViewController.m */; };
-		FD138F001DB0C28D00D73FCE /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EF91DB0C28D00D73FCE /* ScanViewController.m */; };
-		FD138F011DB0C28D00D73FCE /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138EFB1DB0C28D00D73FCE /* UIView+Layout.m */; };
 		FD138F1A1DB0C2A000D73FCE /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD138F041DB0C2A000D73FCE /* area.plist */; };
 		FD138F1B1DB0C2A000D73FCE /* STPickerArea.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138F061DB0C2A000D73FCE /* STPickerArea.m */; };
 		FD138F1C1DB0C2A000D73FCE /* NSCalendar+ST.m in Sources */ = {isa = PBXBuildFile; fileRef = FD138F091DB0C2A000D73FCE /* NSCalendar+ST.m */; };
@@ -115,6 +109,14 @@
 		FD635F681DD3217E008E682D /* MHTransformCorrdinate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD635F671DD3217E008E682D /* MHTransformCorrdinate.m */; };
 		FD635F6B1DD321B6008E682D /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = FD635F6A1DD321B6008E682D /* MBProgressHUD+MJ.m */; };
 		FD76D05B1E6A682000A19C23 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76D05A1E6A682000A19C23 /* ViewController.m */; };
+		FD7F1B2F1E7692F100A5B0CE /* MyQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B201E7692F100A5B0CE /* MyQRCodeView.m */; };
+		FD7F1B301E7692F100A5B0CE /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B221E7692F100A5B0CE /* QRCodeGenerator.m */; };
+		FD7F1B311E7692F100A5B0CE /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B241E7692F100A5B0CE /* QRCodeViewController.m */; };
+		FD7F1B321E7692F100A5B0CE /* QRView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B261E7692F100A5B0CE /* QRView.m */; };
+		FD7F1B331E7692F100A5B0CE /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B281E7692F100A5B0CE /* QRViewController.m */; };
+		FD7F1B341E7692F100A5B0CE /* ScanOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B2A1E7692F100A5B0CE /* ScanOrderViewController.m */; };
+		FD7F1B351E7692F100A5B0CE /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B2C1E7692F100A5B0CE /* ScanViewController.m */; };
+		FD7F1B361E7692F100A5B0CE /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7F1B2E1E7692F100A5B0CE /* UIView+Layout.m */; };
 		FD88CD091DB0B77C001703B3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD88CD081DB0B77C001703B3 /* BaseViewController.m */; };
 		FD8958E31E63CC800007C535 /* NewRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8958E21E63CC800007C535 /* NewRegisterViewController.m */; };
 		FD8958E91E640AB80007C535 /* jcore-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8958E61E640AB80007C535 /* jcore-ios-1.1.0.a */; };
@@ -211,18 +213,6 @@
 		FD138EEB1DB0C26C00D73FCE /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		FD138EEC1DB0C26C00D73FCE /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		FD138EED1DB0C26C00D73FCE /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		FD138EF01DB0C28D00D73FCE /* MyQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQRCodeView.h; sourceTree = "<group>"; };
-		FD138EF11DB0C28D00D73FCE /* MyQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQRCodeView.m; sourceTree = "<group>"; };
-		FD138EF21DB0C28D00D73FCE /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
-		FD138EF31DB0C28D00D73FCE /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
-		FD138EF41DB0C28D00D73FCE /* QRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRView.h; sourceTree = "<group>"; };
-		FD138EF51DB0C28D00D73FCE /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
-		FD138EF61DB0C28D00D73FCE /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
-		FD138EF71DB0C28D00D73FCE /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
-		FD138EF81DB0C28D00D73FCE /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
-		FD138EF91DB0C28D00D73FCE /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
-		FD138EFA1DB0C28D00D73FCE /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
-		FD138EFB1DB0C28D00D73FCE /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		FD138F041DB0C2A000D73FCE /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
 		FD138F051DB0C2A000D73FCE /* STPickerArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPickerArea.h; sourceTree = "<group>"; };
 		FD138F061DB0C2A000D73FCE /* STPickerArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPickerArea.m; sourceTree = "<group>"; };
@@ -381,6 +371,22 @@
 		FD635F6A1DD321B6008E682D /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		FD76D0591E6A682000A19C23 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FD76D05A1E6A682000A19C23 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FD7F1B1F1E7692F100A5B0CE /* MyQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQRCodeView.h; sourceTree = "<group>"; };
+		FD7F1B201E7692F100A5B0CE /* MyQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQRCodeView.m; sourceTree = "<group>"; };
+		FD7F1B211E7692F100A5B0CE /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
+		FD7F1B221E7692F100A5B0CE /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
+		FD7F1B231E7692F100A5B0CE /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		FD7F1B241E7692F100A5B0CE /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		FD7F1B251E7692F100A5B0CE /* QRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRView.h; sourceTree = "<group>"; };
+		FD7F1B261E7692F100A5B0CE /* QRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRView.m; sourceTree = "<group>"; };
+		FD7F1B271E7692F100A5B0CE /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
+		FD7F1B281E7692F100A5B0CE /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
+		FD7F1B291E7692F100A5B0CE /* ScanOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanOrderViewController.h; sourceTree = "<group>"; };
+		FD7F1B2A1E7692F100A5B0CE /* ScanOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanOrderViewController.m; sourceTree = "<group>"; };
+		FD7F1B2B1E7692F100A5B0CE /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		FD7F1B2C1E7692F100A5B0CE /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		FD7F1B2D1E7692F100A5B0CE /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		FD7F1B2E1E7692F100A5B0CE /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		FD88CD061DB0B469001703B3 /* CommonWork.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWork.pch; sourceTree = "<group>"; };
 		FD88CD071DB0B77C001703B3 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		FD88CD081DB0B77C001703B3 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -543,26 +549,6 @@
 				FD138EED1DB0C26C00D73FCE /* GTMDefines.h */,
 			);
 			path = GTMBase64;
-			sourceTree = "<group>";
-		};
-		FD138EEF1DB0C28D00D73FCE /* QR_ZBar */ = {
-			isa = PBXGroup;
-			children = (
-				FD138EF01DB0C28D00D73FCE /* MyQRCodeView.h */,
-				FD138EF11DB0C28D00D73FCE /* MyQRCodeView.m */,
-				FD138EF21DB0C28D00D73FCE /* QRCodeGenerator.h */,
-				FD138EF31DB0C28D00D73FCE /* QRCodeGenerator.m */,
-				FD138EF41DB0C28D00D73FCE /* QRView.h */,
-				FD138EF51DB0C28D00D73FCE /* QRView.m */,
-				FD138EF61DB0C28D00D73FCE /* QRViewController.h */,
-				FD138EF71DB0C28D00D73FCE /* QRViewController.m */,
-				FD138EF81DB0C28D00D73FCE /* ScanViewController.h */,
-				FD138EF91DB0C28D00D73FCE /* ScanViewController.m */,
-				FD138EFA1DB0C28D00D73FCE /* UIView+Layout.h */,
-				FD138EFB1DB0C28D00D73FCE /* UIView+Layout.m */,
-			);
-			name = QR_ZBar;
-			path = GTMBase64/QR_ZBar;
 			sourceTree = "<group>";
 		};
 		FD138F021DB0C2A000D73FCE /* STPickerView */ = {
@@ -933,6 +919,29 @@
 			name = LocationCategray;
 			sourceTree = "<group>";
 		};
+		FD7F1B1E1E7692F100A5B0CE /* QR_ZBar */ = {
+			isa = PBXGroup;
+			children = (
+				FD7F1B1F1E7692F100A5B0CE /* MyQRCodeView.h */,
+				FD7F1B201E7692F100A5B0CE /* MyQRCodeView.m */,
+				FD7F1B211E7692F100A5B0CE /* QRCodeGenerator.h */,
+				FD7F1B221E7692F100A5B0CE /* QRCodeGenerator.m */,
+				FD7F1B231E7692F100A5B0CE /* QRCodeViewController.h */,
+				FD7F1B241E7692F100A5B0CE /* QRCodeViewController.m */,
+				FD7F1B251E7692F100A5B0CE /* QRView.h */,
+				FD7F1B261E7692F100A5B0CE /* QRView.m */,
+				FD7F1B271E7692F100A5B0CE /* QRViewController.h */,
+				FD7F1B281E7692F100A5B0CE /* QRViewController.m */,
+				FD7F1B291E7692F100A5B0CE /* ScanOrderViewController.h */,
+				FD7F1B2A1E7692F100A5B0CE /* ScanOrderViewController.m */,
+				FD7F1B2B1E7692F100A5B0CE /* ScanViewController.h */,
+				FD7F1B2C1E7692F100A5B0CE /* ScanViewController.m */,
+				FD7F1B2D1E7692F100A5B0CE /* UIView+Layout.h */,
+				FD7F1B2E1E7692F100A5B0CE /* UIView+Layout.m */,
+			);
+			path = QR_ZBar;
+			sourceTree = "<group>";
+		};
 		FD88CCFD1DB0ACE3001703B3 /* BaseController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1005,6 +1014,7 @@
 		FD88CD011DB0AD1A001703B3 /* ThirdClass */ = {
 			isa = PBXGroup;
 			children = (
+				FD7F1B1E1E7692F100A5B0CE /* QR_ZBar */,
 				FD8958E41E640A9D0007C535 /* JPush */,
 				FD635F651DD3216E008E682D /* LocationCategray */,
 				FD635F4A1DD2EDB9008E682D /* StarRatingView */,
@@ -1012,7 +1022,6 @@
 				FD1F3C341DB49D5A00CC9A9D /* DrawerClasses */,
 				FD138F231DB0C2C600D73FCE /* XHPhoto */,
 				FD138EEA1DB0C26C00D73FCE /* GTMBase64 */,
-				FD138EEF1DB0C28D00D73FCE /* QR_ZBar */,
 				FD138F021DB0C2A000D73FCE /* STPickerView */,
 			);
 			name = ThirdClass;
@@ -1380,12 +1389,12 @@
 				FD31E4F61DBA1A3500A4245F /* CommentsViewController.m in Sources */,
 				FD138F1E1DB0C2A000D73FCE /* STPickerSingle.m in Sources */,
 				FD1F3C5A1DB4C41100CC9A9D /* ImageCollectionViewCell.m in Sources */,
-				FD138EFD1DB0C28D00D73FCE /* QRCodeGenerator.m in Sources */,
 				FD1B51DF1DB0D06600FC5707 /* SMPageControl.m in Sources */,
 				FD138EBF1DB0BAC200D73FCE /* TabBarController.m in Sources */,
 				FD2BD0721DC8288100288C71 /* DriverListDetailViewController.m in Sources */,
 				FD50F9601DB8655F003E288F /* PublishLishModel.m in Sources */,
 				FD1F3C421DB49EC600CC9A9D /* HOMEMenuViewController.m in Sources */,
+				FD7F1B361E7692F100A5B0CE /* UIView+Layout.m in Sources */,
 				FD2D339A1DC194CD00ABE3BA /* PublishGoodsViewController.m in Sources */,
 				FD1F3C531DB4B3D500CC9A9D /* MessagesViewController.m in Sources */,
 				FDA57AFB1E728D030089C7F7 /* SettingViewController.m in Sources */,
@@ -1398,23 +1407,25 @@
 				FD138ECF1DB0BD6E00D73FCE /* MyFMDataBase.m in Sources */,
 				FD36D6A31DC086A500D28A2B /* CompanyIDentityModel.m in Sources */,
 				FD138EE91DB0C11700D73FCE /* LoginViewController.m in Sources */,
+				FD7F1B311E7692F100A5B0CE /* QRCodeViewController.m in Sources */,
 				FD138EB91DB0B9F000D73FCE /* LoadingViewController.m in Sources */,
 				FD138F1C1DB0C2A000D73FCE /* NSCalendar+ST.m in Sources */,
 				FD1F3C4F1DB4A15700CC9A9D /* RegisterInfoModel.m in Sources */,
 				FD36D69C1DC0541E00D28A2B /* TFTableViewCell.m in Sources */,
 				FD138F1B1DB0C2A000D73FCE /* STPickerArea.m in Sources */,
+				FD7F1B301E7692F100A5B0CE /* QRCodeGenerator.m in Sources */,
 				FD138F331DB0C52700D73FCE /* BaseTableView.m in Sources */,
 				FD138ED81DB0BE8600D73FCE /* UIView+addition.m in Sources */,
 				FD138EDC1DB0BF0B00D73FCE /* MyPicButton.m in Sources */,
 				FD635F491DD2D3CB008E682D /* CommentsDetailViewController.m in Sources */,
-				FD138EFC1DB0C28D00D73FCE /* MyQRCodeView.m in Sources */,
 				FD1F3C3C1DB49D5A00CC9A9D /* JVFloatingDrawerSpringAnimator.m in Sources */,
+				FD7F1B341E7692F100A5B0CE /* ScanOrderViewController.m in Sources */,
 				FD138F481DB0C91900D73FCE /* HomeViewController.m in Sources */,
+				FD7F1B321E7692F100A5B0CE /* QRView.m in Sources */,
 				FD138ED21DB0BDDC00D73FCE /* BLImageSize.m in Sources */,
 				FD635F531DD2EDCB008E682D /* starView.m in Sources */,
 				FD138EC61DB0BCDF00D73FCE /* UIViewExt.m in Sources */,
 				FD635F681DD3217E008E682D /* MHTransformCorrdinate.m in Sources */,
-				FD138EFF1DB0C28D00D73FCE /* QRViewController.m in Sources */,
 				FD138EE21DB0C00C00D73FCE /* SelectedView.m in Sources */,
 				FD635F571DD31723008E682D /* OrderTrackingViewController.m in Sources */,
 				FDA57AF81E7289160089C7F7 /* AppQrCodeViewController.m in Sources */,
@@ -1424,12 +1435,12 @@
 				FD31E4E81DB9F2FA00A4245F /* IDentityViewController.m in Sources */,
 				FD138F4B1DB0C94700D73FCE /* PublishViewController.m in Sources */,
 				FD8958E31E63CC800007C535 /* NewRegisterViewController.m in Sources */,
-				FD138F011DB0C28D00D73FCE /* UIView+Layout.m in Sources */,
 				FD138F1F1DB0C2A000D73FCE /* STConst.m in Sources */,
 				FDA57AFE1E728D6B0089C7F7 /* SettingTableView.m in Sources */,
 				FD138EBC1DB0BA6E00D73FCE /* navigationController.m in Sources */,
 				FD138F1D1DB0C2A000D73FCE /* STPickerDate.m in Sources */,
 				FD3A751C1DB73FCB0042114B /* HomeListModel.m in Sources */,
+				FD7F1B351E7692F100A5B0CE /* ScanViewController.m in Sources */,
 				FD31E4DF1DB99EB100A4245F /* LookingForViewController.m in Sources */,
 				FD635F511DD2EDCB008E682D /* StarRating.m in Sources */,
 				FD1F3C4C1DB4A11600CC9A9D /* PresentBaseViewController.m in Sources */,
@@ -1437,13 +1448,12 @@
 				FDEEF95C1DAC73F500CCACE6 /* AppDelegate.m in Sources */,
 				FD138EEE1DB0C26C00D73FCE /* GTMBase64.m in Sources */,
 				FD138F401DB0C79B00D73FCE /* PicShowView.m in Sources */,
-				FD138F001DB0C28D00D73FCE /* ScanViewController.m in Sources */,
 				FD138ED51DB0BDFB00D73FCE /* NetRequest.m in Sources */,
 				FD205F491DE3DA0C00CEE662 /* AddressModel.m in Sources */,
 				FD138F4E1DB0C98D00D73FCE /* OrderCenterViewController.m in Sources */,
 				FD635F611DD31830008E682D /* Place.m in Sources */,
-				FD138EFE1DB0C28D00D73FCE /* QRView.m in Sources */,
 				FD1F3C3E1DB49D5A00CC9A9D /* JVFloatingDrawerViewController.m in Sources */,
+				FD7F1B331E7692F100A5B0CE /* QRViewController.m in Sources */,
 				FD635F5F1DD31830008E682D /* KCAnnotation.m in Sources */,
 				FD138EDF1DB0BF9500D73FCE /* MySelectView.m in Sources */,
 				FD50F9581DB8584E003E288F /* PublishTableView.m in Sources */,
@@ -1485,6 +1495,7 @@
 				FD635F601DD31830008E682D /* MapView.m in Sources */,
 				FD138F201DB0C2A000D73FCE /* STUI.m in Sources */,
 				FD31E4EF1DB9F3BC00A4245F /* IDentityTableViewCell.m in Sources */,
+				FD7F1B2F1E7692F100A5B0CE /* MyQRCodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

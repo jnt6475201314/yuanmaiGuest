@@ -12,6 +12,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ZBarSDK.h"
 #import "QRViewController.h"
+//#import "OrderDetailViewController.h"
+//#import "GoodsSourceModel.h"
 
 @interface ScanViewController ()<
 ZBarReaderDelegate,
@@ -206,8 +208,12 @@ static NSInteger ledType = 1;
         self.OrderNumber = string;
         alertView.tag = 100087;
         [self.session stopRunning];
-        [alertView show];
-//        [self searchBtnEvent];
+        if (![self.upVCTitle isEqualToString:@"便捷下单"]) {
+//            [self searchBtnEvent];
+        }else
+        {
+            [alertView show];
+        }
     }
 }
 
@@ -258,11 +264,10 @@ static NSInteger ledType = 1;
     if (alertView.tag == 100087) {
         if (buttonIndex == 0) {
             [self.session startRunning];
-//            if ([self.Odelegate respondsToSelector:@selector(returnOrderNum:)]) {
-//                [self.Odelegate returnOrderNum:self.OrderNumber];
-//            }
-//            [self.navigationController popViewControllerAnimated:YES];
-//            [self searchBtnEvent];
+            if ([self.Odelegate respondsToSelector:@selector(returnOrderNum:)]) {
+                [self.Odelegate returnOrderNum:self.OrderNumber];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
         }
     }
     
@@ -276,58 +281,50 @@ static NSInteger ledType = 1;
 #if 0
 - (void)searchBtnEvent
 {
+    
     if (self.OrderNumber.length) {
-        NSString * urlStr = @"http://202.91.248.43/project/index.php/Admin/Applineorder/seek_order.html";
-        NSDictionary * params = @{@"order_number":self.OrderNumber};
-        NSLog(@"%@?order_number=%@", urlStr, self.OrderNumber);
+        NSString * urlStr = @"http://202.91.248.43/project/Admin/Applineorder/saomiao";
+        NSDictionary * params = @{@"num":self.OrderNumber};
+        [self showTipView:@"正在查找数据信息，请稍候。。。"];
         [NetRequest postDataWithUrlString:urlStr withParams:params success:^(id data) {
             
-            NSLog(@"%@",data);
+            NSLog(@"%@", data);
             if ([data[@"code"] isEqualToString:@"1"]) {
-                [self showTipView:data[@"message"]];
+                NSMutableArray * arr =[[NSMutableArray alloc] initWithArray:data[@"data"]];
+                NSLog(@"%ld  arr:%@", arr.count, arr);
                 
-                // 分割字符串
-                NSString * string = params[@"order_number"];
-                NSRange range = NSMakeRange(string.length - 4, 1);
-                NSString * markStr = [string substringWithRange:range];
-//                NSArray * array = [string componentsSeparatedByString:douhao];
-                NSLog(@"------ %@ ------", markStr);
-                
-                if ([markStr isEqualToString:@"2"]) {
-                    // 南都
-                    NSLog(@"是南都的");
-                    SourceDetailViewController * detailVC = [[SourceDetailViewController alloc] init];
-                    detailVC.sourceType = @"扫描";
-                    NanduSourceModel * nanduModel = [[NanduSourceModel alloc] initWithDictionary:data[@"data"] error:nil];
-                    detailVC.nanduModel = nanduModel;
-                    detailVC.sourceCompany = @"南都";
-                    detailVC.sessionDelegate = self;
-                    [self.navigationController pushViewController:detailVC animated:YES];
-                }else if ([markStr isEqualToString:@"1"]){
-                    // 中控
-                    NSLog(@"是中控的");
-                    SourceDetailViewController * detailVC = [[SourceDetailViewController alloc] init];
-                    detailVC.sourceType = @"扫描";
-                    zhongSourceModel * zhongModel = [[zhongSourceModel alloc] initWithDictionary:data[@"datas"] error:nil];
-                    detailVC.zhongModel = zhongModel;
-                    detailVC.sourceCompany = @"中控";
-                    detailVC.sessionDelegate = self;
-                    [self.navigationController pushViewController:detailVC animated:YES];
+                NSMutableDictionary * modelDict = [[NSMutableDictionary alloc] initWithDictionary:arr[0]];
+                NSMutableString * modelStr = [[NSMutableString alloc] init];
+                for (NSMutableDictionary * dict in arr) {
+                    NSString * str = [NSString stringWithFormat:@"%@,", dict[@"uid"]];
+                    modelStr = [modelStr stringByAppendingString:[NSString stringWithFormat:@"%@", str]];
                 }
                 
-            }else{
-//                [self showTipView:data[@"message"]];
-                UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"提示"message:[NSString stringWithFormat:@"扫描结果:\n%@",data[@"message"]] delegate:self cancelButtonTitle:@"确定"otherButtonTitles:nil];
+                NSLog(@"%@", modelStr);
+                [modelDict setObject:modelStr forKey:@"uid"];
+                NSLog(@"%@", modelDict);
+                GoodsSourceModel * model = [[GoodsSourceModel alloc] initWithDictionary:modelDict error:nil];
+                OrderDetailViewController * orderDetailVC = [[OrderDetailViewController alloc] init];
+                orderDetailVC.model = model;
+                orderDetailVC.upVC = @"订单扫描";
+                [self.navigationController pushViewController:orderDetailVC animated:YES];
+                
+            }else
+            {
+                UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"提示：无此订单信息"message:[NSString stringWithFormat:@"扫描结果:\n%@",self.OrderNumber] delegate:self cancelButtonTitle:@"确定"otherButtonTitles:nil];
                 alertView.tag = 100088;
-//                [self.session stopRunning];
+                [self.session stopRunning];
                 [alertView show];
             }
         } fail:^(id errorDes) {
             
             NSLog(@"%@", errorDes);
+            [self showTipView:@"获取信息失败！"];
+            [self.session startRunning];
         }];
     }else{
         [self showTipView:@"查询编码不能为空"];
+        [self.session startRunning];
     }
     
 }

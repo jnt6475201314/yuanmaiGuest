@@ -41,7 +41,8 @@
 #define API_GetVerifyCode_URL [NSString stringWithFormat:@"%@App/code.html", CommonHeadUrl]  // 获取验证码
 #define API_ForgetPasswords_URL [NSString stringWithFormat:@"%@App/customer_password.html", CommonHeadUrl]  // 忘记密码
 #define API_Register_URL [NSString stringWithFormat:@"%@App/zhuce.html", CommonHeadUrl]  // 注册
-//
+
+#define API_SCAN_URL [NSString stringWithFormat:@"%@Appdriver/scanning", CommonHeadUrl]  // 运单扫描
 #define API_PublishOrderInfo_URL [NSString stringWithFormat:@"%@AppCustomer/orders.html", CommonHeadUrl]  // 发布货源信息
 #define API_PublishOrderList_URL [NSString stringWithFormat:@"%@AppCustomer/releaseorder.html", CommonHeadUrl]  // 发布货源列表
 #define API_PushlishDetailWithGid(gid) [NSString stringWithFormat:@"%@AppCustomer/CustomerOrderInfo?uid=%@&gid=%@", CommonHeadUrl,GETUID,gid]   // 发布／运单／评论 详情接口
