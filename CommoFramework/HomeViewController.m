@@ -22,14 +22,14 @@
 #import "NavigationViewController.h"   // 导航
 
 
-@interface HomeViewController ()<XWDragCellCollectionViewDataSource, XWDragCellCollectionViewDelegate, TableViewSelectedEvent>
+@interface HomeViewController ()<XWDragCellCollectionViewDataSource, XWDragCellCollectionViewDelegate>
 {
     NSInteger _page;
 }
 @property (nonatomic, strong) NSMutableArray * dataSource;
 @property (nonatomic,strong) NSArray * data;
 @property (nonatomic, weak) XWDragCellCollectionView *mainView;
-@property (nonatomic, strong) HomeTableView * tableView;
+//@property (nonatomic, strong) HomeTableView * tableView;
 
 @end
 
@@ -86,7 +86,7 @@
     // 添加上方轮播图
     
     // 本地加载 --- 创建不带标题的图片轮播器
-    _headerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, 320*widthScale, 137*heightScale) delegate:self placeholderImage:[UIImage imageNamed:@"placeHolderImg"]];
+    _headerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 64, screen_width, screen_height/4) delegate:self placeholderImage:[UIImage imageNamed:@"placeHolderImg"]];
     // 情景二： 网络接口获取图片
     NSMutableArray * imgStrData = [[NSMutableArray alloc] init];
     NSLog(@"%@", API_HOME_GETCYCLEIMG_URL);
@@ -113,10 +113,12 @@
     [_headerView adjustWhenControllerViewWillAppera];
     _headerView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
     
-    _cellArray = [NSMutableArray arrayWithObjects:@"h_scanIcon", @"h_share",@"h_comments",@"h_services", nil];
+    _cellArray = [NSMutableArray arrayWithObjects:@"h_saomiao", @"h_pingjia",@"h_fenxiang_blue",@"h_fuwu", nil];
     [self configDragCollectionView];
     
-    [self configTableView];
+    [self.view addSubview:_headerView];
+    [self.view addSubview:_mainView];
+//    [self configTableView];
 }
 
 
@@ -125,15 +127,23 @@
     //    layout.itemSize = CGSizeMake(80, 80);
     //    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
+//    // 定义每个UICollectionView 的大小
+//    layout.itemSize = CGSizeMake(70*widthScale, 92.5*heightScale);
+//    // 定义每个UICollectionView 横向的间距
+//    layout.minimumLineSpacing = 5*widthScale;
+//    // 定义每个UICollectionView 的纵向间距
+//    layout.minimumInteritemSpacing = 5*heightScale;
+//    // 定义每个UICollectionView 的边距
     // 定义每个UICollectionView 的大小
-    layout.itemSize = CGSizeMake(70*widthScale, 92.5*heightScale);
+    layout.itemSize = CGSizeMake((screen_width-20)/2, (screen_width-20)/2+10);
     // 定义每个UICollectionView 横向的间距
-    layout.minimumLineSpacing = 5*widthScale;
+    layout.minimumLineSpacing = 5;
     // 定义每个UICollectionView 的纵向间距
-    layout.minimumInteritemSpacing = 5*heightScale;
+    layout.minimumInteritemSpacing = 0;
     // 定义每个UICollectionView 的边距
-    layout.sectionInset = UIEdgeInsetsMake(5*heightScale, 5*widthScale, 5*heightScale, 5*widthScale); // 上左下右
-    XWDragCellCollectionView *mainView = [[XWDragCellCollectionView alloc] initWithFrame:CGRectMake(0, _headerView.bottom, screen_width, 100 * heightScale) collectionViewLayout:layout];
+    layout.sectionInset = UIEdgeInsetsMake(5, 8, 5, 8); // 上左下右
+//    layout.sectionInset = UIEdgeInsetsMake(5*heightScale, 5*widthScale, 5*heightScale, 5*widthScale); // 上左下右
+    XWDragCellCollectionView *mainView = [[XWDragCellCollectionView alloc] initWithFrame:CGRectMake(0, _headerView.bottom, screen_width, screen_height - screen_height/4 - 113) collectionViewLayout:layout];
     _mainView = mainView;
     mainView.delegate = self;
     mainView.dataSource = self;
@@ -145,32 +155,32 @@
     [mainView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
 }
 
-- (void)configTableView{
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, _mainView.height + _headerView.height)];
-        [view addSubview:_headerView];
-        [view addSubview:_mainView];
-        view;
-    });
-    self.tableView.tabViewDataSource = [[NSMutableArray alloc] init];
-    [self.view addSubview:self.tableView];
-}
+//- (void)configTableView{
+//    self.tableView.tableHeaderView = ({
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, _mainView.height + _headerView.height)];
+//        [view addSubview:_headerView];
+//        [view addSubview:_mainView];
+//        view;
+//    });
+//    self.tableView.tabViewDataSource = [[NSMutableArray alloc] init];
+//    [self.view addSubview:self.tableView];
+//}
 
--(BaseTableView *)tableView{
-    if (_tableView == nil) {
-        _tableView = [[HomeTableView alloc] initWithFrame:CGRectMake(0, 63, screen_width, screen_height - 110) style:UITableViewStyleGrouped cellHeight:100];
-        [_tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableViewIdentifier];
-        _tableView.tableViewEventDelegate = self;
-        [_tableView.mj_header removeFromSuperview];
-        [_tableView.mj_footer removeFromSuperview];
-    }
-    return _tableView;
-}
+//-(BaseTableView *)tableView{
+//    if (_tableView == nil) {
+//        _tableView = [[HomeTableView alloc] initWithFrame:CGRectMake(0, 63, screen_width, screen_height - 110) style:UITableViewStyleGrouped cellHeight:100];
+//        [_tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:baseTableViewIdentifier];
+//        _tableView.tableViewEventDelegate = self;
+//        [_tableView.mj_header removeFromSuperview];
+//        [_tableView.mj_footer removeFromSuperview];
+//    }
+//    return _tableView;
+//}
 
 -(NSArray *)data{
     if (!_data) {
 //        _data = @[@"扫描", @"找车", @"评价", @"服务", @"常用地址", @"常用司机", @"消息", @"个人中心"];
-        _data = @[@"扫描", @"分享", @"评价", @"服务"];
+        _data = @[@"扫描", @"评价", @"分享", @"服务"];
     }
     return _data;
 }
@@ -193,7 +203,7 @@
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     [cell sizeToFit];
     
-    NSArray * textArray = @[@"扫描", @"分享", @"评价", @"服务"];
+    NSArray * textArray = @[@"扫描", @"评价", @"分享", @"服务"];
     cell.imgView.image = [UIImage imageNamed:_cellArray[indexPath.item]];
     cell.text.text = textArray[indexPath.item];
     //按钮事件就不实现了……
@@ -278,78 +288,78 @@
     
 }
 
-#pragma mark - TableViewSelectedEvent
--(void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    DriverListDetailViewController * DriverDetailVC = [[DriverListDetailViewController alloc] init];
-    DriverDetailVC.driverModel = self.tableView.tabViewDataSource[indexPath.section];
-    NSLog(@"%@", DriverDetailVC.driverModel);
-    [self.navigationController pushViewController:DriverDetailVC animated:YES];
-}
-
--(void)headerRefreshingEvent{
-    NSLog(@"上拉刷新");
-    _page = 1;
-    [self showHUD:@"数据加载中，请稍候。。" isDim:YES];
-    
-    NSString * urlStr = @"http://202.91.248.43/project/index.php/Admin/Apporder/driver_list.html";
-    NSDictionary * params = @{@"p":[NSString stringWithFormat:@"%ld", _page]};
-    NSLog(@"%@?%@", urlStr, params);
-    [NetRequest getDataWithUrlString:urlStr withParams:params success:^(id data) {
-        [self.tableView.tabViewDataSource removeAllObjects];
-        NSLog(@"dataSource --- %@----", data);
-        if ([data[@"code"] isEqualToString:@"1"]) {
-            for (NSDictionary * dict in data[@"data"]) {
-                HomeListModel * model = [[HomeListModel alloc] initWithDictionary:dict error:nil];
-                [self.tableView.tabViewDataSource addObject:model];
-            }
-            [self.tableView reloadData];
-        }else if ([data[@"code"] isEqualToString:@"2"]){
-            [self showTipView:data[@"message"]];
-        }
-        [self hideHUD];
-        [self.tableView.mj_header endRefreshing];
-    } fail:^(id errorDes) {
-        
-        NSLog(@"%@", errorDes);
-        [self hideHUD];
-        [self showTipView:@"数据请求失败，请检查网络设置"];
-        [self.tableView.mj_header endRefreshing];
-    }];
-}
-
-- (void)footerRefreshingEvent{
-    NSLog(@"下拉加载更多");
-    _page++;
-    [self showHUD:@"正在加载更多数据，请稍候。。" isDim:YES];
-    
-    NSString * urlStr = @"http://202.91.248.43/project/index.php/Admin/Apporder/driver_list.html";
-    NSDictionary * params = @{@"p":[NSString stringWithFormat:@"%ld", _page]};
-    [NetRequest getDataWithUrlString:urlStr withParams:params success:^(id data) {
-        
-        if ([data[@"code"] isEqualToString:@"1"]) {
-            for (NSDictionary * dict in data[@"data"]) {
-                HomeListModel * model = [[HomeListModel alloc] initWithDictionary:dict error:nil];
-                [self.tableView.tabViewDataSource addObject:model];
-            }
-        }else if ([data[@"code"] isEqualToString:@"2"]){
-            if ([data[@"message"] isEqualToString:@"暂无数据"]) {
-                [self showTipView:@"暂无更多车源数据"];
-            }
-        }
-        [self.tableView reloadData];
-        [self hideHUD];
-        [self.tableView.mj_footer endRefreshing];
-    } fail:^(id errorDes) {
-        
-        NSLog(@"%@", errorDes);
-        [self hideHUD];
-        [self showTipView:@"数据请求失败，请检查网络设置"];
-        [self.tableView.mj_footer endRefreshing];
-    }];
-}
-
-
+//#pragma mark - TableViewSelectedEvent
+//-(void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    DriverListDetailViewController * DriverDetailVC = [[DriverListDetailViewController alloc] init];
+//    DriverDetailVC.driverModel = self.tableView.tabViewDataSource[indexPath.section];
+//    NSLog(@"%@", DriverDetailVC.driverModel);
+//    [self.navigationController pushViewController:DriverDetailVC animated:YES];
+//}
+//
+//-(void)headerRefreshingEvent{
+//    NSLog(@"上拉刷新");
+//    _page = 1;
+//    [self showHUD:@"数据加载中，请稍候。。" isDim:YES];
+//    
+//    NSString * urlStr = @"http://202.91.248.43/project/index.php/Admin/Apporder/driver_list.html";
+//    NSDictionary * params = @{@"p":[NSString stringWithFormat:@"%ld", _page]};
+//    NSLog(@"%@?%@", urlStr, params);
+//    [NetRequest getDataWithUrlString:urlStr withParams:params success:^(id data) {
+//        [self.tableView.tabViewDataSource removeAllObjects];
+//        NSLog(@"dataSource --- %@----", data);
+//        if ([data[@"code"] isEqualToString:@"1"]) {
+//            for (NSDictionary * dict in data[@"data"]) {
+//                HomeListModel * model = [[HomeListModel alloc] initWithDictionary:dict error:nil];
+//                [self.tableView.tabViewDataSource addObject:model];
+//            }
+//            [self.tableView reloadData];
+//        }else if ([data[@"code"] isEqualToString:@"2"]){
+//            [self showTipView:data[@"message"]];
+//        }
+//        [self hideHUD];
+//        [self.tableView.mj_header endRefreshing];
+//    } fail:^(id errorDes) {
+//        
+//        NSLog(@"%@", errorDes);
+//        [self hideHUD];
+//        [self showTipView:@"数据请求失败，请检查网络设置"];
+//        [self.tableView.mj_header endRefreshing];
+//    }];
+//}
+//
+//- (void)footerRefreshingEvent{
+//    NSLog(@"下拉加载更多");
+//    _page++;
+//    [self showHUD:@"正在加载更多数据，请稍候。。" isDim:YES];
+//    
+//    NSString * urlStr = @"http://202.91.248.43/project/index.php/Admin/Apporder/driver_list.html";
+//    NSDictionary * params = @{@"p":[NSString stringWithFormat:@"%ld", _page]};
+//    [NetRequest getDataWithUrlString:urlStr withParams:params success:^(id data) {
+//        
+//        if ([data[@"code"] isEqualToString:@"1"]) {
+//            for (NSDictionary * dict in data[@"data"]) {
+//                HomeListModel * model = [[HomeListModel alloc] initWithDictionary:dict error:nil];
+//                [self.tableView.tabViewDataSource addObject:model];
+//            }
+//        }else if ([data[@"code"] isEqualToString:@"2"]){
+//            if ([data[@"message"] isEqualToString:@"暂无数据"]) {
+//                [self showTipView:@"暂无更多车源数据"];
+//            }
+//        }
+//        [self.tableView reloadData];
+//        [self hideHUD];
+//        [self.tableView.mj_footer endRefreshing];
+//    } fail:^(id errorDes) {
+//        
+//        NSLog(@"%@", errorDes);
+//        [self hideHUD];
+//        [self showTipView:@"数据请求失败，请检查网络设置"];
+//        [self.tableView.mj_footer endRefreshing];
+//    }];
+//}
+//
+//
 
 #pragma mark - Event Handler
 - (void)leftNavBtnClicked

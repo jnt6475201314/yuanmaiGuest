@@ -14,20 +14,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
-        self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake((CGRectGetWidth(self.frame) - 57*widthScale)/2, (CGRectGetWidth(self.frame) - 57*widthScale)/2, 57*widthScale, 57*widthScale)];
+        self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(30, 20, CGRectGetWidth(self.frame)-60, CGRectGetWidth(self.frame)-60)];
         self.imgView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        self.imgView.layer.cornerRadius = self.imgView.width/2;
+        self.imgView.layer.cornerRadius = 5;
         self.imgView.clipsToBounds = YES;
         [self addSubview:self.imgView];
         
-        self.text = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.imgView.frame), CGRectGetWidth(self.frame), 30)];
+        self.text = [[UILabel alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(self.imgView.frame)+10, CGRectGetWidth(self.frame)-10, 20)];
         self.text.backgroundColor = [UIColor clearColor];
         self.text.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.text];
-        
     }
     return self;
 }
