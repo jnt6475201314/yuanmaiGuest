@@ -17,7 +17,7 @@
 #import "MessagesViewController.h"  // 信息
 #import "LookingForViewController.h"   // 找车
 #import "CommentsViewController.h"  // 评价
-//#import "ServeViewController.h"  // 服务
+#import "PublishGoodsViewController.h"
 #import "DriverListDetailViewController.h"   // 司机列表详情界面
 #import "NavigationViewController.h"   // 导航
 
@@ -73,7 +73,7 @@
 - (void)configUI{
     self.navView.backgroundColor = navBar_color;//color(67, 89, 224, 1);
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.text = @"远迈物流";
+    self.titleLabel.text = @"远迈客户";
 //    [self showRightBtn:CGRectMake(self.navView.width - 45*widthScale, 24, 40*widthScale, 36) withImage:@"nav_message_white" withImageWidth:24];
     self.dataSource = [[NSMutableArray alloc] init];
     
@@ -113,7 +113,7 @@
     [_headerView adjustWhenControllerViewWillAppera];
     _headerView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
     
-    _cellArray = [NSMutableArray arrayWithObjects:@"h_saomiao", @"h_pingjia",@"h_fenxiang_blue",@"h_fuwu", nil];
+    _cellArray = [NSMutableArray arrayWithObjects:@"h_saomiao",@"h_fabu", @"h_pingjia",@"h_fuwu", nil];
     [self configDragCollectionView];
     
     [self.view addSubview:_headerView];
@@ -180,7 +180,7 @@
 -(NSArray *)data{
     if (!_data) {
 //        _data = @[@"扫描", @"找车", @"评价", @"服务", @"常用地址", @"常用司机", @"消息", @"个人中心"];
-        _data = @[@"扫描", @"评价", @"分享", @"服务"];
+        _data = @[@"扫描", @"发布", @"评价", @"服务"];
     }
     return _data;
 }
@@ -203,7 +203,7 @@
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     [cell sizeToFit];
     
-    NSArray * textArray = @[@"扫描", @"评价", @"分享", @"服务"];
+    NSArray * textArray = @[@"扫描", @"发布", @"评价", @"服务"];
     cell.imgView.image = [UIImage imageNamed:_cellArray[indexPath.item]];
     cell.text.text = textArray[indexPath.item];
     //按钮事件就不实现了……
@@ -266,6 +266,10 @@
         [self leftNavBtnClicked];
     }else if ([title isEqualToString:@"分享"]){
         [self shareBtnEvent];
+    }else if ([title isEqualToString:@"发布"]){
+        NSLog(@"发布");
+        PublishGoodsViewController * pubGoodsVC = [[PublishGoodsViewController alloc] init];
+        [self.navigationController pushViewController:pubGoodsVC animated:YES];
     }
 }
 

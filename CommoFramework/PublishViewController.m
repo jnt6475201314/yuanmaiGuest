@@ -57,7 +57,6 @@
 #pragma mark - Event Hander
 - (void)publishButtonEvent{
     NSLog(@"发布");
-//    PubGoodsViewController * pubGoodsVC = [[PubGoodsViewController alloc] init];
     PublishGoodsViewController * pubGoodsVC = [[PublishGoodsViewController alloc] init];
     [self.navigationController pushViewController:pubGoodsVC animated:YES];
 }
