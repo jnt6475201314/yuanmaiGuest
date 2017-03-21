@@ -14,6 +14,7 @@
 @interface MapView : UIView<MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) Place * driverPlace;
+@property (nonatomic, copy) NSString * distansTime;
 
 @property (nonatomic, strong) MKMapView * mapView;
 @property (nonatomic, strong) CLLocationManager * locationManager;

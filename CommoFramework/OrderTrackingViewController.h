@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) PublishLishModel * orderModel;
 @property (nonatomic, strong) NSString * currentAddress;
+@property (nonatomic, strong) NSString * updateTime;    // 更新位置的时间
 
 @end

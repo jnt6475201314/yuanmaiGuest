@@ -56,6 +56,7 @@
         [_actionButton setTitle:@"删除订单" forState:UIControlStateNormal];
 //        [_params setObject:@"13" forKey:@"state"];
     }
+    [self getDriverAddressAction];
 }
 
 - (void)navRightBtnClick:(UIButton *)button
@@ -70,6 +71,7 @@
         NSLog(@"%@", data);
         if ([data[@"code"] isEqualToString:@"1"]) {
             orderTrackingVC.currentAddress = data[@"data"][@"position"];
+            orderTrackingVC.updateTime = data[@"data"][@"add_time"];
             [self.navigationController pushViewController:orderTrackingVC animated:YES];
         }else
         {
@@ -85,6 +87,16 @@
         NSLog(@"%@", errorDes);
     }];
     
+}
+
+- (void)getDriverAddressAction
+{
+    [NetRequest postDataWithUrlString:API_DriverCurrentLocation_URL withParams:@{@"driver_id":self.orderModel.driver_id} success:^(id data) {
+        
+        NSLog(@"获取位置 data：%@", data);
+    } fail:^(NSString *errorDes) {
+        NSLog(@"获取位置失败 error：%@", errorDes);
+    }];
 }
 
 - (void)actionButtonEvent:(UIButton *)actionBtn

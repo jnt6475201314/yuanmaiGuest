@@ -227,7 +227,7 @@
                 CLLocationCoordinate2D location1=CLLocationCoordinate2DMake(driverPM.location.coordinate.latitude, driverPM.location.coordinate.longitude);
                 NSLog(@"xxx %f, %f", location1.latitude, location1.longitude);
                 KCAnnotation *annotation1=[[KCAnnotation alloc]init];
-                annotation1.title=@"司机当前位置";
+                annotation1.title=[NSString stringWithFormat:@"司机位置 更新时间：%@", _distansTime];
                 annotation1.subtitle=p.name;
                 annotation1.coordinate=location1;
                 [_mapView addAnnotation:annotation1];
@@ -263,7 +263,7 @@
     else if([[annotation title] isEqualToString:@"出发地"]){
         newAnnotation.image = [UIImage imageNamed:@"pub_detail_startImg"];
         
-    }else if ([[annotation title] isEqualToString:@"司机当前位置"]){
+    }else if ([[annotation title] isEqualToString:[NSString stringWithFormat:@"司机位置 更新时间：%@", _distansTime]]){
         newAnnotation.image = [UIImage imageNamed:@"map_truck"];
     }
     newAnnotation.canShowCallout=YES;
